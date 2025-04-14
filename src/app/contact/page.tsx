@@ -54,9 +54,8 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       <PageHeader
-        title="Contact Us"
-        subtitle="Get in touch with our team"
-        thaiTitle="ติดต่อเรา"
+        title="ติดต่อเรา"
+        subtitle="ติดต่อเราเพื่อสร้างความสัมพันธ์กับเรา"
       />
 
       <SectionContainer background="white">
@@ -72,10 +71,9 @@ export default function Contact() {
               <AbstractFlowerBg />
             </div>
 
-            <h3 className="text-2xl font-bold">Contact Information</h3>
+            <h3 className="text-2xl font-bold">ข้อมูลการติดต่อ</h3>
             <p className="mt-2 text-primary-200">
-              Fill up the form and our team will get back to you within 24
-              hours.
+              กรอกข้อมูลในฟอร์มและเราจะติดต่อกลับคุณในเวลา 24 ชั่วโมง
             </p>
 
             <div className="mt-8 space-y-6">
@@ -84,7 +82,7 @@ export default function Contact() {
                   <PhoneIcon className="h-6 w-6 text-primary-200" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-base font-medium">Phone</p>
+                  <p className="text-base font-medium">เบอร์โทร</p>
                   <p className="mt-1">+66 76 123 456</p>
                 </div>
               </div>
@@ -94,7 +92,7 @@ export default function Contact() {
                   <EnvelopeIcon className="h-6 w-6 text-primary-200" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-base font-medium">Email</p>
+                  <p className="text-base font-medium">อีเมล</p>
                   <p className="mt-1">info@phuketflowershop.com</p>
                 </div>
               </div>
@@ -104,7 +102,7 @@ export default function Contact() {
                   <MapPinIcon className="h-6 w-6 text-primary-200" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-base font-medium">Location</p>
+                  <p className="text-base font-medium">ที่ตั้ง</p>
                   <p className="mt-1">
                     123 Thepkrasattri Rd, Phuket 83110, Thailand
                   </p>
@@ -113,7 +111,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-12">
-              <h4 className="text-lg font-medium">Follow Us</h4>
+              <h4 className="text-lg font-medium">ติดตามเรา</h4>
               <div className="mt-4 flex space-x-4">
                 {[
                   { name: "Facebook", href: "#" },
@@ -280,11 +278,7 @@ export default function Contact() {
       </SectionContainer>
 
       {/* Map */}
-      <SectionContainer
-        background="light"
-        title="Our Location"
-        thaiTitle="ที่ตั้งของเรา"
-      >
+      <SectionContainer background="light" title="ที่ตั้งของเรา">
         <div className="h-96 w-full bg-gray-200 rounded-lg overflow-hidden shadow-inner">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252232.25309900828!2d98.29150521953126!3d7.978534999999989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305031e2c462524f%3A0xcda0482bcad13394!2zUGh1a2V0IEZsb3dlciBTaG9wIOC4nuC4seC4meC4nuC4seC4meC4mOC5jCDguKfguLHguJTguJTguK3guIHguYTguKHguYnguJvguKXguLXguIHguYDguIU!5e0!3m2!1sen!2sth!4v1652345678901!5m2!1sen!2sth"

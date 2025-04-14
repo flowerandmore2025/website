@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   MagnifyingGlassIcon,
@@ -66,23 +64,22 @@ export default function ProductsPage() {
   return (
     <div>
       <PageHeader
-        title="Our Products"
-        thaiTitle="สินค้าของเรา"
-        subtitle="Explore our collection of beautiful flower arrangements and gifts"
+        title="สินค้าของเรา"
+        subtitle="สำรวจคอลเลกชันการจัดดอกไม้และของขวัญสุดสวยของเรา"
       />
 
       <SectionContainer background="white">
         <div className="lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
           {/* Filters - Mobile Toggle */}
           <div className="flex items-center justify-between lg:hidden mb-6">
-            <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+            <h2 className="text-lg font-medium text-gray-900">ตัวกรอง</h2>
             <button
               type="button"
               className="flex items-center text-sm text-gray-700 hover:text-primary-600"
               onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
             >
               <AdjustmentsHorizontalIcon className="w-5 h-5 mr-1" />
-              {mobileFiltersOpen ? "Hide filters" : "Show filters"}
+              {mobileFiltersOpen ? "ซ่อนตัวกรอง" : "แสดงตัวกรอง"}
             </button>
           </div>
 
@@ -99,7 +96,7 @@ export default function ProductsPage() {
               {/* Search */}
               <div>
                 <h3 className="text-sm font-medium text-gray-900 mb-4">
-                  Search
+                  ค้นหา
                 </h3>
                 <div className="relative">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -113,7 +110,7 @@ export default function ProductsPage() {
                     name="search"
                     id="search"
                     className="block w-full rounded-md border-0 py-2 pl-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm"
-                    placeholder="Search products..."
+                    placeholder="ค้นหาสินค้า..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -123,7 +120,7 @@ export default function ProductsPage() {
               {/* Categories */}
               <div className="pt-8">
                 <h3 className="text-sm font-medium text-gray-900 mb-4">
-                  Categories
+                  หมวดหมู่
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
@@ -139,7 +136,7 @@ export default function ProductsPage() {
                       htmlFor="category-all"
                       className="ml-3 text-sm text-gray-600"
                     >
-                      All Categories
+                      ทั้งหมด
                     </label>
                   </div>
                   {products.categories.map((category) => (
@@ -169,7 +166,7 @@ export default function ProductsPage() {
               {/* Price Range */}
               <div className="pt-8">
                 <h3 className="text-sm font-medium text-gray-900 mb-4">
-                  Price Range (THB)
+                  ราคา (บาท)
                 </h3>
                 <div className="space-y-6">
                   <div>
@@ -224,7 +221,7 @@ export default function ProductsPage() {
                   }}
                   className="inline-flex items-center text-sm text-primary-600 hover:text-primary-700"
                 >
-                  Reset filters
+                  รีเซ็ตตัวกรอง
                 </button>
               </div>
             </motion.div>
@@ -234,8 +231,7 @@ export default function ProductsPage() {
           <div className="lg:col-span-2 lg:mt-0 xl:col-span-3">
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-medium text-gray-900">
-                {filteredProducts.length}{" "}
-                {filteredProducts.length === 1 ? "product" : "products"} found
+                {`พบ ${filteredProducts.length} สินค้า`}
               </h2>
               <div className="text-sm text-gray-500">
                 {selectedCategory !== "all" && (
@@ -281,10 +277,10 @@ export default function ProductsPage() {
                   />
                 </svg>
                 <h3 className="mt-2 text-sm font-medium text-gray-900">
-                  No products found
+                  ไม่พบสินค้า
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  Try adjusting your search or filter criteria.
+                  ลองปรับปรุงตัวกรองหรือค้นหาสินค้าใหม่
                 </p>
                 <div className="mt-6">
                   <button
@@ -295,7 +291,7 @@ export default function ProductsPage() {
                     }}
                     className="inline-flex items-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500"
                   >
-                    Reset filters
+                    รีเซ็ตตัวกรอง
                   </button>
                 </div>
               </div>

@@ -1,16 +1,8 @@
 import Link from "next/link";
+import { navigation as navigationConstants } from "@/constants";
 
 const navigation = {
-  main: [
-    { name: "Home", href: "/" },
-    { name: "Products", href: "/products" },
-    { name: "Blog", href: "/blog" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Policy", href: "/policy" },
-    { name: "Review", href: "/review" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ],
+  main: navigationConstants,
   social: [
     {
       name: "Facebook",

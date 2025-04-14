@@ -5,12 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import products from "@/data/products.json";
-import { StarIcon } from "@heroicons/react/20/solid";
-import {
-  HeartIcon,
-  ShoppingCartIcon,
-  ArrowPathIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 // Mock function to get related products
 const getRelatedProducts = (categoryId: string, currentId: string) => {
@@ -20,7 +15,6 @@ const getRelatedProducts = (categoryId: string, currentId: string) => {
 };
 
 export default function ProductPage({ params }: { params: { id: string } }) {
-  const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
 
   const product = products.products.find((p) => p.id === params.id);
@@ -50,13 +44,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <ol className="flex items-center space-x-2">
             <li>
               <Link href="/" className="hover:text-primary-600">
-                Home
+                หน้าหลัก
               </Link>
             </li>
             <li className="flex items-center space-x-2">
               <span>/</span>
               <Link href="/products" className="hover:text-primary-600">
-                Products
+                สินค้า
               </Link>
             </li>
             {category && (
@@ -141,7 +135,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             </h1>
 
             {/* Rating */}
-            <div className="mt-2 flex items-center">
+            {/* <div className="mt-2 flex items-center">
               <div className="flex items-center">
                 {[0, 1, 2, 3, 4].map((star) => (
                   <StarIcon
@@ -154,21 +148,23 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 ))}
               </div>
               <p className="ml-3 text-sm text-gray-500">
-                {rating} out of 5 stars ({reviewCount} reviews)
+                {rating} จาก 5 ดาว ({reviewCount} รีวิว)
               </p>
-            </div>
+            </div> */}
 
             <div className="mt-4">
               <p className="text-3xl font-semibold tracking-tight text-gray-900">
                 THB {product.price.toLocaleString()}
               </p>
               <p className="mt-1 text-sm text-primary-600">
-                Free delivery for orders above THB 1,000
+                ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท
               </p>
             </div>
 
             <div className="mt-6 border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-medium text-gray-900">Description</h3>
+              <h3 className="text-lg font-medium text-gray-900">
+                คำอธิบายสินค้า
+              </h3>
               <div className="mt-2 space-y-6 text-base text-gray-700">
                 {product.description}
               </div>
@@ -176,87 +172,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             <div className="mt-6 border-t border-gray-200 pt-6">
               <div className="flex items-center">
-                <h2 className="text-sm font-medium text-gray-900">
-                  Crafted by
-                </h2>
+                <h2 className="text-sm font-medium text-gray-900">สร้างโดย</h2>
                 <p className="ml-2 text-sm text-gray-600 font-medium">
                   {product.craftedBy}
                 </p>
               </div>
               <div className="mt-2 flex items-center">
                 <h2 className="text-sm font-medium text-gray-900">
-                  Availability
+                  สินค้าในคลัง
                 </h2>
                 <p
                   className={`ml-2 text-sm font-medium ${
                     product.inStock ? "text-green-600" : "text-red-600"
                   }`}
                 >
-                  {product.inStock ? "In Stock" : "Out of Stock"}
+                  {product.inStock ? "มีสินค้า" : "สินค้าหมด"}
                 </p>
               </div>
             </div>
-
-            <form className="mt-6 border-t border-gray-200 pt-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <label
-                    htmlFor="quantity"
-                    className="mr-3 text-sm font-medium text-gray-900"
-                  >
-                    Quantity
-                  </label>
-                  <div className="flex border border-gray-300 rounded-md">
-                    <button
-                      type="button"
-                      className="px-3 py-1 text-gray-600 hover:bg-gray-100"
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      id="quantity"
-                      name="quantity"
-                      min={1}
-                      value={quantity}
-                      onChange={(e) => setQuantity(Number(e.target.value))}
-                      className="w-12 border-0 text-center focus:ring-0"
-                    />
-                    <button
-                      type="button"
-                      className="px-3 py-1 text-gray-600 hover:bg-gray-100"
-                      onClick={() => setQuantity(quantity + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                <button
-                  type="button"
-                  className="flex-1 rounded-md bg-primary-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 flex items-center justify-center"
-                >
-                  <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                  Add to cart
-                </button>
-                <button
-                  type="button"
-                  className="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 flex items-center justify-center"
-                >
-                  <HeartIcon className="h-5 w-5 mr-2" />
-                  Wishlist
-                </button>
-              </div>
-            </form>
 
             {/* Additional features */}
             <div className="mt-8 border-t border-gray-200 pt-6 space-y-4">
               <div className="flex items-center">
                 <ArrowPathIcon className="h-5 w-5 text-green-500 mr-2" />
-                <p className="text-sm text-gray-600">14-day return policy</p>
+                <p className="text-sm text-gray-600">
+                  นักสั่งซื้อสามารถยกเลิกคำสั่งซื้อได้ภายใน 1 ชั่วโมง
+                </p>
               </div>
               <div className="flex items-center">
                 <svg
@@ -274,7 +215,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   />
                 </svg>
                 <p className="text-sm text-gray-600">
-                  Free delivery in Phuket for orders above THB 1,000
+                  ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท
                 </p>
               </div>
             </div>
@@ -285,7 +226,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {relatedProducts.length > 0 && (
           <div className="mt-16 border-t border-gray-200 pt-8">
             <h2 className="text-2xl font-display font-bold tracking-tight text-gray-900">
-              You might also like
+              สิ่งที่คุณอาจจะชอบ
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((relatedProduct) => (
@@ -321,7 +262,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                       </h3>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
-                      THB {relatedProduct.price}
+                      {relatedProduct.price.toLocaleString()} บาท
                     </p>
                   </div>
                 </div>

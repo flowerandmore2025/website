@@ -4,7 +4,9 @@
       "id": "1",
       "name": "ช่อดูเก้ดอกไม้สด",
       "price": 560,
-      "images": ["/images/products/placeholder-1.jpg"],
+      "images": [
+        "/images/products/placeholder-1.jpg"
+      ],
       "category": "bouquets",
       "craftedBy": "Arun Magar",
       "description": "Beautiful fresh flower bouquet with a perfect blend of colors",
@@ -14,7 +16,9 @@
       "id": "2",
       "name": "ของขวัญกับดอกพิเศษ",
       "price": 560,
-      "images": ["/images/products/placeholder-2.jpg"],
+      "images": [
+        "/images/products/placeholder-2.jpg"
+      ],
       "category": "gifts",
       "craftedBy": "Arun Magar",
       "description": "Special gift arrangement with flowers",
@@ -24,7 +28,9 @@
       "id": "3",
       "name": "กระเช้าผลไม้",
       "price": 599,
-      "images": ["/images/products/placeholder-3.jpg"],
+      "images": [
+        "/images/products/placeholder-3.jpg"
+      ],
       "category": "fruit_baskets",
       "craftedBy": "Arun Magar",
       "description": "Fresh fruit basket with flowers",
@@ -34,7 +40,9 @@
       "id": "4",
       "name": "งานดอกไม้ไทย",
       "price": 560,
-      "images": ["/images/products/placeholder-4.jpg"],
+      "images": [
+        "/images/products/placeholder-4.jpg"
+      ],
       "category": "thai_arrangements",
       "craftedBy": "Arun Magar",
       "description": "Traditional Thai flower arrangement",
@@ -45,17 +53,17 @@
     {
       "id": "bouquets",
       "name": "Bouquets",
-      "nameInThai": "ช่อดอกไม้"
+      "nameInThai": "'งานช่อบูเก้ดอกไม้สด"
     },
     {
-      "id": "gifts",
-      "name": "Gift Sets",
-      "nameInThai": "ของขวัญ"
+      "id": "nature_inspired_floral_creation",
+      "name": "Nature-Inspired Floral Creation",
+      "nameInThai": "งานดอกไม้เสมือนจริง"
     },
     {
-      "id": "fruit_baskets",
-      "name": "Fruit Baskets",
-      "nameInThai": "กระเช้าผลไม้"
+      "id": "velvet_wire_floral_art",
+      "name": "Velvet Wire Floral Art",
+      "nameInThai": "งานดอกไม้ลวดกำมะหยี่"
     },
     {
       "id": "thai_arrangements",
@@ -63,4 +71,4 @@
       "nameInThai": "งานดอกไม้ไทย"
     }
   ]
-} 
+}

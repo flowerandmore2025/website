@@ -42,7 +42,9 @@ export default function ProductAnimation() {
 
     return () => {
       tl.kill();
-      gsap.killTweensOf(svgRef.current.querySelector("#gift"));
+      if (svgRef.current) {
+        gsap.killTweensOf(svgRef.current.querySelector("#gift"));
+      }
     };
   }, []);
 

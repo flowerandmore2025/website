@@ -1,16 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const navigation = [
-  { name: "HOME", href: "/" },
-  { name: "PRODUCTS", href: "/products" },
-  { name: "BLOG", href: "/blog" },
-  { name: "FAQ", href: "/faq" },
-  { name: "POLICY", href: "/policy" },
-  { name: "REVIEW", href: "/review" },
-  // { name: "ABOUT", href: "/about" },
-  { name: "CONTACT", href: "/contact" },
-];
+import { navigation } from "@/constants";
 
 export default function Header() {
   return (

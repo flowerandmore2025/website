@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 interface PageHeaderProps {
   title: string;
   subtitle?: string;
-  thaiTitle?: string;
   backgroundImage?: string;
   align?: "left" | "center";
 }
@@ -13,7 +12,6 @@ interface PageHeaderProps {
 export default function PageHeader({
   title,
   subtitle,
-  thaiTitle,
   backgroundImage,
   align = "center",
 }: PageHeaderProps) {
@@ -60,18 +58,14 @@ export default function PageHeader({
                     height="80"
                     patternUnits="userSpaceOnUse"
                   >
-                    <rect
-                      width="80"
-                      height="80"
-                      fill="url(#smallGrid)"
-                    />
-                    <circle 
-                      cx="40" 
-                      cy="40" 
-                      r="5" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="1" 
+                    <rect width="80" height="80" fill="url(#smallGrid)" />
+                    <circle
+                      cx="40"
+                      cy="40"
+                      r="5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
                       className="text-primary-600"
                     />
                   </pattern>
@@ -84,7 +78,7 @@ export default function PageHeader({
       </div>
 
       {/* Content */}
-      <div 
+      <div
         className={`relative py-16 sm:py-24 px-6 ${
           align === "center" ? "text-center" : "text-left"
         }`}
@@ -98,13 +92,8 @@ export default function PageHeader({
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900">
               {title}
             </h1>
-            {thaiTitle && (
-              <p className="mt-2 text-xl md:text-2xl text-gray-700 font-light">
-                {thaiTitle}
-              </p>
-            )}
             {subtitle && (
-              <motion.p 
+              <motion.p
                 className="mt-4 max-w-3xl mx-auto text-lg text-gray-600"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -134,4 +123,4 @@ export default function PageHeader({
       </div>
     </div>
   );
-} 
+}

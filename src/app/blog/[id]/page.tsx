@@ -114,7 +114,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
               className="inline-flex items-center text-sm font-medium text-white/80 hover:text-white mb-4 transition-colors"
             >
               <ChevronLeftIcon className="w-4 h-4 mr-1" />
-              Back to Blog
+              กลับไปที่บทความทั้งหมด
             </Link>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-white">
               {post.title}
@@ -251,7 +251,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
             transition={{ delay: 0.7, duration: 0.5 }}
           >
             <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
-              Related Articles
+              บทความที่เกี่ยวข้อง
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {relatedPosts.map((relatedPost, index) => (
@@ -296,23 +296,22 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         )}
 
         {/* Newsletter sign-up */}
-        <motion.div
+        {/* <motion.div
           className="mt-16 bg-primary-50 rounded-2xl p-8 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
         >
           <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">
-            Stay Updated
+            อัพเดตข่าวสำหรับคุณ
           </h3>
           <p className="text-gray-600 mb-6">
-            Subscribe to our newsletter for the latest flower arrangement tips
-            and news
+            สมัครรับข่าวสำหรับคุณ
           </p>
           <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="กรอกอีเมลของคุณ"
               className="flex-1 min-w-0 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               required
             />
@@ -322,10 +321,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              Subscribe
+              สมัครรับข่าว
             </motion.button>
           </form>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </motion.div>
   );

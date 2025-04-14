@@ -4,12 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import products from "@/data/products.json";
-import HeroAnimation from "@/components/animations/HeroAnimation";
 import CartAnimation from "@/components/animations/CartAnimation";
 import TruckAnimation from "@/components/animations/TruckAnimation";
 import PhoneAnimation from "@/components/animations/PhoneAnimation";
-import ProductAnimation from "@/components/animations/ProductAnimation";
-import AbstractFlowerBg from "@/components/animations/AbstractFlowerBg";
 import SectionContainer from "@/components/ui/SectionContainer";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import CtaSection from "@/components/ui/CtaSection";
@@ -64,21 +61,6 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative h-[80vh] md:h-[600px] bg-primary-100/90 bg-cover bg-center overflow-hidden flex items-center">
         <div className="absolute inset-0 bg-black/10" />
-
-        {/* Animated flowers background */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <div className="grid grid-cols-3 gap-8 w-full h-full p-12">
-            {Array.from({ length: 9 }).map((_, index) => (
-              <div
-                key={index}
-                className="w-full h-full transform scale-75 opacity-80"
-              >
-                <HeroAnimation />
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex flex-col items-center md:items-start text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +71,7 @@ export default function Home() {
               Phuket Flower Shop
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-700 max-w-lg">
-              ดอกไม้นำเข้าจากยุโรป ส่งมอบความรู้สึกดีๆ ให้คนพิเศษ
+              ส่งมอบความรู้สึกดีๆ ให้คนพิเศษ
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <motion.div
@@ -100,7 +82,7 @@ export default function Home() {
                   href="/products"
                   className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 flex items-center justify-center"
                 >
-                  SHOP NOW
+                  เลือกซื้อสินค้า
                   <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </Link>
               </motion.div>
@@ -112,7 +94,7 @@ export default function Home() {
                   href="/contact"
                   className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50 border border-gray-200 transition-colors duration-300 flex items-center justify-center"
                 >
-                  CONTACT US
+                ติดต่อเรา
                 </Link>
               </motion.div>
             </div>
@@ -138,8 +120,7 @@ export default function Home() {
 
       {/* About Section */}
       <SectionContainer
-        title="About us"
-        thaiTitle="เกี่ยวกับเรา"
+        title="เกี่ยวกับเรา"
         background="white"
         withPattern={true}
       >
@@ -147,18 +128,18 @@ export default function Home() {
           <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             <Feature
               animationComponent={<CartAnimation />}
-              title="Large Assortment"
-              description="We offer many different types of products with fewer variations in each category"
+              title="ความหลากหลายของสินค้า"
+              description="เรามีสินค้าหลากหลายประเภทที่มีความแตกต่างกันในแต่ละหมวดหมู่"
             />
             <Feature
               animationComponent={<TruckAnimation />}
-              title="Fast & Free Shipping"
-              description="ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ500บ."
+              title="ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท"
+              description="ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท"
             />
             <Feature
               animationComponent={<PhoneAnimation />}
-              title="24/7 Support"
-              description="Answers to any business related inquiry 24/7 in real-time"
+              title="สนับสนุนตลอด 24 ชั่วโมง"
+              description="ตอบคำถามทุกข้อที่เกี่ยวกับธุรกิจตลอด 24 ชั่วโมง"
             />
           </dl>
         </div>
@@ -166,8 +147,7 @@ export default function Home() {
 
       {/* Products Section */}
       <SectionContainer
-        title="Our most popular products"
-        thaiTitle="สินค้ายอดนิยม"
+        title="สินค้ายอดนิยม"
         background="light"
       >
         <div className="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
@@ -198,7 +178,7 @@ export default function Home() {
               href="/products"
               className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 inline-flex items-center"
             >
-              VIEW ALL PRODUCTS
+              ดูสินค้าทั้งหมด
               <ArrowLongRightIcon className="ml-2 h-5 w-5" />
             </Link>
           </motion.div>
@@ -207,8 +187,7 @@ export default function Home() {
 
       {/* Testimonials section */}
       <SectionContainer
-        title="What our customers say"
-        thaiTitle="เสียงจากลูกค้า"
+        title="เสียงจากลูกค้า"
         background="white"
       >
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -276,11 +255,11 @@ export default function Home() {
 
       {/* Call to action */}
       <CtaSection
-        title="Ready to brighten someone's day?"
-        subtitle="Order beautiful flower arrangements for any occasion"
-        primaryButtonText="Shop Now"
+        title="พร้อมที่จะทำให้วันของใครสักคนสดใหม่ขึ้นมั้ย?"
+        subtitle="สั่งซื้อดอกไม้สวยๆ สำหรับทุกโอกาส"
+        primaryButtonText="เลือกซื้อสินค้า"
         primaryButtonLink="/products"
-        secondaryButtonText="Learn More"
+        secondaryButtonText="เกี่ยวกับเรา"
         secondaryButtonLink="/about"
         withFlower={true}
       />

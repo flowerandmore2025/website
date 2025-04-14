@@ -7,7 +7,6 @@ interface SectionContainerProps {
   children: ReactNode;
   title?: string;
   subtitle?: string;
-  thaiTitle?: string;
   className?: string;
   background?: "white" | "light" | "primary";
   withPattern?: boolean;
@@ -17,7 +16,6 @@ export default function SectionContainer({
   children,
   title,
   subtitle,
-  thaiTitle,
   className = "",
   background = "white",
   withPattern = false,
@@ -29,18 +27,14 @@ export default function SectionContainer({
   };
 
   return (
-    <section 
+    <section
       className={`relative py-16 sm:py-24 ${bgClasses[background]} ${className}`}
     >
       {/* Optional background pattern */}
       {withPattern && (
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-            <svg
-              width="100%"
-              height="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern
                   id="sectionPattern"
@@ -78,17 +72,6 @@ export default function SectionContainer({
                 {title}
               </motion.h2>
             )}
-            {thaiTitle && (
-              <motion.p
-                className="mt-2 text-lg text-gray-700"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-              >
-                {thaiTitle}
-              </motion.p>
-            )}
             {subtitle && (
               <motion.p
                 className="mt-4 text-lg leading-8 text-gray-600"
@@ -115,4 +98,4 @@ export default function SectionContainer({
       </div>
     </section>
   );
-} 
+}
