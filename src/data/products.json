@@ -1,0 +1,66 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "ช่อดูเก้ดอกไม้สด",
+      "price": 560,
+      "images": ["/images/products/placeholder-1.jpg"],
+      "category": "bouquets",
+      "craftedBy": "Arun Magar",
+      "description": "Beautiful fresh flower bouquet with a perfect blend of colors",
+      "inStock": true
+    },
+    {
+      "id": "2",
+      "name": "ของขวัญกับดอกพิเศษ",
+      "price": 560,
+      "images": ["/images/products/placeholder-2.jpg"],
+      "category": "gifts",
+      "craftedBy": "Arun Magar",
+      "description": "Special gift arrangement with flowers",
+      "inStock": true
+    },
+    {
+      "id": "3",
+      "name": "กระเช้าผลไม้",
+      "price": 599,
+      "images": ["/images/products/placeholder-3.jpg"],
+      "category": "fruit_baskets",
+      "craftedBy": "Arun Magar",
+      "description": "Fresh fruit basket with flowers",
+      "inStock": true
+    },
+    {
+      "id": "4",
+      "name": "งานดอกไม้ไทย",
+      "price": 560,
+      "images": ["/images/products/placeholder-4.jpg"],
+      "category": "thai_arrangements",
+      "craftedBy": "Arun Magar",
+      "description": "Traditional Thai flower arrangement",
+      "inStock": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "bouquets",
+      "name": "Bouquets",
+      "nameInThai": "ช่อดอกไม้"
+    },
+    {
+      "id": "gifts",
+      "name": "Gift Sets",
+      "nameInThai": "ของขวัญ"
+    },
+    {
+      "id": "fruit_baskets",
+      "name": "Fruit Baskets",
+      "nameInThai": "กระเช้าผลไม้"
+    },
+    {
+      "id": "thai_arrangements",
+      "name": "Thai Arrangements",
+      "nameInThai": "งานดอกไม้ไทย"
+    }
+  ]
+} 

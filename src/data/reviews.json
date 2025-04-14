@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "id": "1",
+      "name": "Sarah Johnson",
+      "rating": 5,
+      "comment": "Beautiful flowers and amazing service! The bouquet was exactly what I wanted and delivery was on time.",
+      "date": "2024-03-15",
+      "image": "/images/reviews/placeholder-avatar.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Michael Chen",
+      "rating": 5,
+      "comment": "Ordered flowers for my wife's birthday. They were fresh and lasted for over a week. Will definitely order again!",
+      "date": "2024-03-10",
+      "image": "/images/reviews/placeholder-avatar.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Emma Wilson",
+      "rating": 4,
+      "comment": "Great selection of flowers and very helpful staff. The only reason for 4 stars is that delivery was a bit late.",
+      "date": "2024-03-05",
+      "image": "/images/reviews/placeholder-avatar.jpg"
+    }
+  ]
+} 

@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flower & More - Phuket Flower Shop
+
+A modern e-commerce website for a flower shop in Phuket, built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Responsive design that works on all devices
+- Product catalog with search and filtering
+- Blog section with articles about flowers and arrangements
+- Customer reviews and testimonials
+- Contact form for inquiries
+- Bilingual support (English/Thai)
+- Easy-to-update product and blog data through JSON files
+
+## Pages
+
+- Landing Page
+- Product Search Page (with filters by group type and price)
+- Product Details Page
+- FAQs Page
+- Contact Us Page
+- Policy Page
+- Blog Overview Page and Blog Details Page
+- Review Page
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. Run the development server:
+   ```bash
+   pnpm dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+src/
+├── app/                  # Next.js app router pages
+├── components/          # Reusable React components
+├── data/               # JSON data files
+│   ├── products.json   # Product catalog data
+│   ├── blog.json      # Blog posts data
+│   ├── reviews.json   # Customer reviews data
+│   └── faqs.json      # FAQ data
+└── styles/            # Global styles and Tailwind config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data Management
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All dynamic content is stored in JSON files under the `src/data` directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `products.json`: Product catalog with categories
+- `blog.json`: Blog posts and categories
+- `reviews.json`: Customer reviews and ratings
+- `faqs.json`: Frequently asked questions
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Headless UI](https://headlessui.com/) - UI components
+- [Heroicons](https://heroicons.com/) - Icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is private and confidential. All rights reserved.

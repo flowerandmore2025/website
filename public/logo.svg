@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <path d="M30 20C40 10 50 15 55 20C60 25 65 35 55 45C45 55 35 50 30 45C25 40 20 30 30 20Z" fill="#8D6E63"/>
+  <path d="M70 20C80 10 90 15 95 20C100 25 105 35 95 45C85 55 75 50 70 45C65 40 60 30 70 20Z" fill="#A1887F"/>
+  <path d="M110 20C120 10 130 15 135 20C140 25 145 35 135 45C125 55 115 50 110 45C105 40 100 30 110 20Z" fill="#BCAAA4"/>
+  <text x="60" y="70" font-family="serif" font-size="20" fill="#5D4037">Flower & More</text>
+</svg> 
