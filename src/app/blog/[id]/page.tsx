@@ -12,7 +12,7 @@ import {
   BookmarkIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client";
 
 // Helper function to get related posts
 const getRelatedPosts = (currentId: string, category: string) => {

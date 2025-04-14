@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import products from "@/data/products.json";
+import products from "@/data/products";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 // Mock function to get related products

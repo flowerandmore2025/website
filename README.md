@@ -43,22 +43,22 @@ A modern e-commerce website for a flower shop in Phuket, built with Next.js, Typ
 src/
 ├── app/                  # Next.js app router pages
 ├── components/          # Reusable React components
-├── data/               # JSON data files
-│   ├── products.json   # Product catalog data
+├── data/               # Data files
+│   ├── products.ts    # Product catalog data
 │   ├── blog.json      # Blog posts data
 │   ├── reviews.json   # Customer reviews data
-│   └── faqs.json      # FAQ data
+│   └── faqs.ts        # FAQ data
 └── styles/            # Global styles and Tailwind config
 ```
 
 ## Data Management
 
-All dynamic content is stored in JSON files under the `src/data` directory:
+All dynamic content is stored in JSON and TypeScript files under the `src/data` directory:
 
-- `products.json`: Product catalog with categories
+- `products.ts`: Product catalog with categories
 - `blog.json`: Blog posts and categories
 - `reviews.json`: Customer reviews and ratings
-- `faqs.json`: Frequently asked questions
+- `faqs.ts`: Frequently asked questions
 
 ## Technologies Used
 

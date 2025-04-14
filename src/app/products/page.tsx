@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client"
 import {
   MagnifyingGlassIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/24/outline";
-import products from "@/data/products.json";
+import products from "@/data/products";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionContainer from "@/components/ui/SectionContainer";
 import CtaSection from "@/components/ui/CtaSection";
@@ -32,7 +32,10 @@ function ProductCard({ product, index }: { product: any; index: number }) {
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([
+    100,
+    products.maxPrice,
+  ]);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -153,10 +156,7 @@ export default function ProductsPage() {
                         htmlFor={`category-${category.id}`}
                         className="ml-3 text-sm text-gray-600"
                       >
-                        {category.name}{" "}
-                        <span className="text-xs text-gray-400">
-                          ({category.nameInThai})
-                        </span>
+                        {category.nameInThai}
                       </label>
                     </div>
                   ))}
@@ -165,22 +165,21 @@ export default function ProductsPage() {
 
               {/* Price Range */}
               <div className="pt-8">
-                <h3 className="text-sm font-medium text-gray-900 mb-4">
-                  ราคา (บาท)
-                </h3>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">ราคา</h3>
                 <div className="space-y-6">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-gray-500">
-                        THB {priceRange[0]}
+                        {priceRange[0].toLocaleString()} บาท
                       </span>
                       <span className="text-sm text-gray-500">
-                        THB {priceRange[1]}
+                        {priceRange[1].toLocaleString()} บาท
                       </span>
                     </div>
                     <input
                       type="range"
-                      min="0"
+                      min="100"
+                      step="10"
                       max={maxPrice}
                       value={priceRange[1]}
                       onChange={(e) =>
@@ -189,7 +188,7 @@ export default function ProductsPage() {
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
                     />
                   </div>
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <input
                       type="number"
                       value={priceRange[0]}
@@ -207,7 +206,7 @@ export default function ProductsPage() {
                       }
                       className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -244,7 +243,7 @@ export default function ProductsPage() {
                 )}
                 {(priceRange[0] > 0 || priceRange[1] < maxPrice) && (
                   <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                    THB {priceRange[0]} - {priceRange[1]}
+                    {priceRange[0]} - {priceRange[1]}
                   </span>
                 )}
               </div>

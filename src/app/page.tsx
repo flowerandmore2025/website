@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import products from "@/data/products.json";
+import products from "@/data/products";
+import * as motion from "motion/react-client";
 import CartAnimation from "@/components/animations/CartAnimation";
 import TruckAnimation from "@/components/animations/TruckAnimation";
 import PhoneAnimation from "@/components/animations/PhoneAnimation";
@@ -94,7 +94,7 @@ export default function Home() {
                   href="/contact"
                   className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50 border border-gray-200 transition-colors duration-300 flex items-center justify-center"
                 >
-                ติดต่อเรา
+                  ติดต่อเรา
                 </Link>
               </motion.div>
             </div>
@@ -146,26 +146,25 @@ export default function Home() {
       </SectionContainer>
 
       {/* Products Section */}
-      <SectionContainer
-        title="สินค้ายอดนิยม"
-        background="light"
-      >
+      <SectionContainer title="สินค้ายอดนิยม" background="light">
         <div className="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-          {products.products.map((product, index) => (
-            <AnimatedCard
-              key={product.id}
-              title={product.name}
-              subtitle={`THB ${product.price}`}
-              content={`Crafted by - ${product.craftedBy}`}
-              imageSrc={
-                product.images && product.images.length > 0
-                  ? product.images[0]
-                  : undefined
-              }
-              href={`/products/${product.id}`}
-              index={index}
-            />
-          ))}
+          {products.products
+            .filter((product) => product.isPopular)
+            .map((product, index) => (
+              <AnimatedCard
+                key={product.id}
+                title={product.name}
+                subtitle={`THB ${product.price}`}
+                content={`Crafted by - ${product.craftedBy}`}
+                imageSrc={
+                  product.images && product.images.length > 0
+                    ? product.images[0]
+                    : undefined
+                }
+                href={`/products/${product.id}`}
+                index={index}
+              />
+            ))}
         </div>
 
         <div className="mt-12 text-center">
@@ -186,10 +185,7 @@ export default function Home() {
       </SectionContainer>
 
       {/* Testimonials section */}
-      <SectionContainer
-        title="เสียงจากลูกค้า"
-        background="white"
-      >
+      <SectionContainer title="เสียงจากลูกค้า" background="white">
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {[
             {
