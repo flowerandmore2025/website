@@ -50,6 +50,7 @@ export default function ProductsPage() {
     <div>
       <PageHeader
         title="สินค้าของเรา"
+        backgroundImage="/images/hero/bouquet.png"
         subtitle="สำรวจคอลเลกชันการจัดดอกไม้และของขวัญสุดสวยของเรา"
       />
 

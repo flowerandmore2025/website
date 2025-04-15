@@ -79,7 +79,7 @@ export default function PageHeader({
 
       {/* Content */}
       <div
-        className={`relative py-16 sm:py-24 px-6 ${
+        className={`relative py-20 sm:py-32 px-6 ${
           align === "center" ? "text-center" : "text-left"
         }`}
       >
@@ -89,7 +89,7 @@ export default function PageHeader({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-primary-50">
               {title}
             </h1>
             {subtitle && (
@@ -107,7 +107,7 @@ export default function PageHeader({
       </div>
 
       {/* Decorative curved bottom edge */}
-      <div className="absolute bottom-0 left-0 right-0">
+      <div className="absolute bottom-[-1px] left-0 right-0">
         <svg
           viewBox="0 0 1440 64"
           fill="none"
