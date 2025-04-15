@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { navigation } from "@/constants";
+import { navigation, phoneNumber } from "@/constants";
 
 export default function Header() {
   return (
@@ -36,7 +36,7 @@ export default function Header() {
 
         <div className="lg:flex lg:flex-1 lg:justify-end">
           <span className="text-sm leading-6 text-gray-900">
-            TEL : 062-222-2222
+            TEL : {phoneNumber}
           </span>
         </div>
       </nav>

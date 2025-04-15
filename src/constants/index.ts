@@ -1,4 +1,3 @@
-
 export const navigation = [
   { name: "หน้าหลัก", href: "/" },
   { name: "สินค้า", href: "/products" },
@@ -7,3 +6,5 @@ export const navigation = [
   { name: "นโยบาย", href: "/policy" },
   { name: "ติดต่อเรา", href: "/contact" },
 ];
+
+export const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
