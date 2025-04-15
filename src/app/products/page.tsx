@@ -10,25 +10,7 @@ import products from "@/data/products";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionContainer from "@/components/ui/SectionContainer";
 import CtaSection from "@/components/ui/CtaSection";
-import AnimatedCard from "@/components/ui/AnimatedCard";
-
-function ProductCard({ product, index }: { product: any; index: number }) {
-  return (
-    <AnimatedCard
-      title={product.name}
-      subtitle={`Crafted by ${product.craftedBy}`}
-      imageSrc={
-        product.images && product.images.length > 0
-          ? product.images[0]
-          : undefined
-      }
-      imageAlt={product.name}
-      href={`/products/${product.id}`}
-      index={index}
-      className="h-full"
-    />
-  );
-}
+import ProductCard from "@/components/ui/ProductCard";
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -243,7 +225,7 @@ export default function ProductsPage() {
                 )}
                 {(priceRange[0] > 0 || priceRange[1] < maxPrice) && (
                   <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                    ราคา {priceRange[0]} บาท - {priceRange[1]} บาท
+                    ราคา {priceRange[0].toLocaleString()} บาท - {priceRange[1].toLocaleString()} บาท
                   </span>
                 )}
               </div>
