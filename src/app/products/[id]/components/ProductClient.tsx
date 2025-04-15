@@ -64,34 +64,56 @@ export default function ProductClient({
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
         {/* Breadcrumbs */}
-        <nav className="text-sm font-medium text-gray-500 mb-8">
-          <ol className="flex items-center space-x-2">
-            <li>
+        <nav className="text-sm font-medium text-gray-500 mb-8" aria-label="Breadcrumb">
+          {/* Mobile breadcrumbs - simplified version */}
+          <div className="md:hidden">
+            <div className="flex items-center mb-2">
+              <Link href="/products" className="text-primary-600 hover:text-primary-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                กลับไปหน้าสินค้า
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center">
+              <span className="text-xs text-gray-400 mr-1">หมวดหมู่:</span>
+              {category && (
+                <Link
+                  href={`/products?category=${category.id}`}
+                  className="text-primary-600 hover:text-primary-700 text-xs"
+                >
+                  {category.nameInThai}
+                </Link>
+              )}
+            </div>
+          </div>
+
+          {/* Desktop breadcrumbs - full version */}
+          <ol className="hidden md:flex items-center flex-wrap">
+            <li className="flex items-center">
               <Link href="/" className="hover:text-primary-600">
                 หน้าหลัก
               </Link>
+              <span className="mx-2 text-gray-400">/</span>
             </li>
-            <li className="flex items-center space-x-2">
-              <span>/</span>
+            <li className="flex items-center">
               <Link href="/products" className="hover:text-primary-600">
                 สินค้า
               </Link>
+              <span className="mx-2 text-gray-400">/</span>
             </li>
             {category && (
-              <li className="flex items-center space-x-2">
-                <span>/</span>
+              <li className="flex items-center">
                 <Link
                   href={`/products?category=${category.id}`}
                   className="hover:text-primary-600"
                 >
                   {category.nameInThai}
                 </Link>
+                <span className="mx-2 text-gray-400">/</span>
               </li>
             )}
-            <li className="flex items-center space-x-2">
-              <span>/</span>
-              <span className="text-gray-900">{product.name}</span>
-            </li>
+            <li className="text-gray-900 truncate max-w-[200px]">{product.name}</li>
           </ol>
         </nav>
 
