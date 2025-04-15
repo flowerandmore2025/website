@@ -38,7 +38,7 @@ export default function AnimatedCard({
     >
       {/* Image or Icon */}
       {imageSrc ? (
-        <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+        <div className="aspect-w-16 aspect-h-14 overflow-hidden">
           <Image
             src={imageSrc}
             alt={imageAlt}

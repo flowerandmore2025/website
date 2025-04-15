@@ -155,7 +155,6 @@ export default function Home() {
                 key={product.id}
                 title={product.name}
                 subtitle={`THB ${product.price}`}
-                content={`Crafted by - ${product.craftedBy}`}
                 imageSrc={
                   product.images && product.images.length > 0
                     ? product.images[0]
