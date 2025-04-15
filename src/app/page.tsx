@@ -49,7 +49,7 @@ function Feature({
                     )}
                 </div>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-primary-800">{title}</h3>
+            <h3 className="mt-4 text-lg font-display font-semibold text-primary-800">{title}</h3>
             <p className="mt-2 text-sm text-gray-600">{description}</p>
         </motion.div>
     );
@@ -60,43 +60,32 @@ export default function Home() {
         <div className="relative min-h-screen w-full overflow-hidden">
             {/* Hero Section */}
             <div
-                className="relative h-[80vh] md:h-[600px] bg-primary-100/90 bg-cover bg-center overflow-hidden flex items-center"
+                className="relative h-[80vh] md:h-[600px] bg-primary-100/90 bg-cover bg-center overflow-hidden flex items-start"
                 style={{backgroundImage: 'url("/images/hero/minimalist-flower.png")'}}>
                 <div
-                    className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex flex-col items-center md:items-start text-center md:text-left">
+                    className="relative ml-4 md:ml-8 lg:ml-16 max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex flex-col items-start text-left">
                     <motion.div
                         initial={{opacity: 0, y: 20}}
                         animate={{opacity: 1, y: 0}}
                         transition={{duration: 0.6}}
                     >
-                        <h1 className="font-display text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                        <h1 className="font-display italic font-thin text-4xl tracking-tight text-white sm:text-6xl">
                             Phuket Flower Shop
                         </h1>
                         <p className="mt-6 text-lg leading-8 text-gray-700 max-w-lg">
-                            ส่งมอบความรู้สึกดีๆ ให้คนพิเศษ
+                            ดอกไม้แทนคำพูดจากใจ ส่งมอบความรู้สึกดีๆส่อม
                         </p>
-                        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
                             <motion.div
                                 whileHover={{scale: 1.05}}
                                 whileTap={{scale: 0.98}}
                             >
                                 <Link
                                     href="/products"
-                                    className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 flex items-center justify-center"
+                                    className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 flex items-center justify-start"
                                 >
                                     เลือกซื้อสินค้า
                                     <ArrowRightIcon className="ml-2 h-4 w-4"/>
-                                </Link>
-                            </motion.div>
-                            <motion.div
-                                whileHover={{scale: 1.05}}
-                                whileTap={{scale: 0.98}}
-                            >
-                                <Link
-                                    href="/contact"
-                                    className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50 border border-gray-200 transition-colors duration-300 flex items-center justify-center"
-                                >
-                                    ติดต่อเรา
                                 </Link>
                             </motion.div>
                         </div>
@@ -104,7 +93,7 @@ export default function Home() {
                 </div>
 
                 {/* Decorative bottom curve */}
-                <div className="absolute bottom-0 left-0 right-0">
+                <div className="absolute bottom-[-1px] left-0 right-0">
                     <svg
                         viewBox="0 0 1440 64"
                         fill="none"
@@ -228,7 +217,7 @@ export default function Home() {
                     </span>
                                     </div>
                                     <div className="ml-3">
-                                        <h3 className="text-base font-medium text-gray-900">
+                                        <h3 className="text-base font-display font-medium text-gray-900">
                                             {testimonial.name}
                                         </h3>
                                         <p className="text-sm text-gray-500">{testimonial.role}</p>
@@ -260,8 +249,8 @@ export default function Home() {
                 subtitle="สั่งซื้อดอกไม้สวยๆ สำหรับทุกโอกาส"
                 primaryButtonText="เลือกซื้อสินค้า"
                 primaryButtonLink="/products"
-                secondaryButtonText="เกี่ยวกับเรา"
-                secondaryButtonLink="/about"
+                secondaryButtonText="ติดต่อเรา"
+                secondaryButtonLink="/contact"
                 withFlower={true}
             />
         </div>
