@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import products from "@/data/products";
 import ProductClient from "./components/ProductClient";
+import {baseUrl} from "@/constants";
 
 // Mock function to get related products
 const getRelatedProducts = (categoryId: string, currentId: string) => {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     : "/images/products/placeholder-1.jpg";
 
   // Construct absolute URL for the image
-  const imageUrl = new URL(productImage, "https://flower-and-more.vercel.app").toString();
+  const imageUrl = new URL(productImage, baseUrl).toString();
 
   return {
     title: `${product.name} | Phuket Flower Shop`,
