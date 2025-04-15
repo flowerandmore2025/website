@@ -61,7 +61,7 @@ export default function Home() {
             {/* Hero Section */}
             <div
                 className="relative h-[80vh] md:h-[600px] bg-primary-100/90 bg-cover bg-center overflow-hidden flex items-start"
-                style={{backgroundImage: 'url("/images/hero/minimalist-flower.png")'}}>
+                style={{backgroundImage: 'url("/images/hero/hydrangeas-minimal.jpg")'}}>
                 <div
                     className="relative ml-4 md:ml-8 lg:ml-16 max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex flex-col items-start text-left">
                     <motion.div
