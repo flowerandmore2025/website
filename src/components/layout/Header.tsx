@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { navigation, phoneNumber } from "@/constants";
 import * as motion from "motion/react-client";
 
@@ -13,10 +13,14 @@ export default function Header() {
   return (
     <header className="bg-white relative z-10">
       {/* Top bar with phone number */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-end py-2">
-        <span className="text-sm leading-6 text-primary-800 font-light">
-          TEL : {phoneNumber || "N/A"}
-        </span>
+      <div className="hidden sm:flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 justify-end py-2">
+        <a
+          href={`tel:${phoneNumber?.replace(/\s+/g, '')}`}
+          className="text-sm leading-6 text-primary-800 font-light hover:text-primary-600 transition-colors duration-200 cursor-pointer flex items-center gap-1"
+        >
+          <PhoneIcon className="h-4 w-4" />
+          <span>TEL : {phoneNumber || "N/A"}</span>
+        </a>
       </div>
 
       {/* Main header with logo */}
@@ -124,9 +128,13 @@ export default function Header() {
                 ))}
               </div>
               <div className="py-4 sm:py-6">
-                <div className="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-light text-primary-800">
-                  TEL : {phoneNumber || "08 2420 3262"}
-                </div>
+                <a
+                  href={`tel:${phoneNumber?.replace(/\s+/g, '') || '0824203262'}`}
+                  className="-mx-3 rounded-lg px-3 py-2.5 text-sm font-light text-primary-800 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 flex items-center gap-2"
+                >
+                  <PhoneIcon className="h-4 w-4" />
+                  <span>TEL : {phoneNumber || "08 2420 3262"}</span>
+                </a>
               </div>
             </div>
           </div>
