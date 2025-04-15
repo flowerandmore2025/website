@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Prompt } from "next/font/google";
+import { Inter, Prompt, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -18,6 +18,13 @@ const prompt = Prompt({
   variable: "--font-prompt",
 });
 
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+});
+
 export const metadata: Metadata = {
   title: "Phuket Flower Shop | Beautiful Floral Arrangements",
   description:
@@ -30,7 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${prompt.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${prompt.variable} ${playfair.variable}`}
+    >
       <body className="min-h-screen flex flex-col">
         {/* Global Abstract flower background */}
         <div className="fixed inset-0 w-screen h-screen opacity-10 pointer-events-none z-0">

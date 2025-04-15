@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-noto-sans-thai)', 'sans-serif'],
+        sans: ['var(--font-prompt)', 'sans-serif'],
         display: ['var(--font-playfair)', 'serif'],
       },
       colors: {
@@ -53,4 +53,4 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
   ],
-} 
+}
