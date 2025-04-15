@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import * as motion from "motion/react-client"
 import {
   MagnifyingGlassIcon,
@@ -13,7 +14,16 @@ import CtaSection from "@/components/ui/CtaSection";
 import ProductCard from "@/components/ui/ProductCard";
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Get category from URL or default to "all"
+  const categoryParam = searchParams.get("category");
+  const initialCategory = categoryParam && products.categories.some(c => c.id === categoryParam)
+    ? categoryParam
+    : "all";
+
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [priceRange, setPriceRange] = useState<[number, number]>([
     100,
     products.maxPrice,
@@ -22,10 +32,22 @@ export default function ProductsPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  // Avoid hydration mismatch
+  // Avoid hydration mismatch and sync URL with selected category
   useEffect(() => {
     setIsClient(true);
-  }, []);
+
+    // If the URL doesn't match the selected category, update it
+    // This ensures URL is in sync with the selected category
+    if (isClient) {
+      const currentCategoryParam = searchParams.get("category");
+
+      if (selectedCategory !== "all" && currentCategoryParam !== selectedCategory) {
+        router.push(`/products?category=${selectedCategory}`);
+      } else if (selectedCategory === "all" && currentCategoryParam) {
+        router.push("/products");
+      }
+    }
+  }, [isClient, selectedCategory, searchParams, router]);
 
   const filteredProducts = products.products.filter((product) => {
     const matchesCategory =
@@ -115,7 +137,11 @@ export default function ProductsPage() {
                       name="category"
                       type="radio"
                       checked={selectedCategory === "all"}
-                      onChange={() => setSelectedCategory("all")}
+                      onChange={() => {
+                        setSelectedCategory("all");
+                        // Update URL when selecting "all" category (remove category param)
+                        router.push("/products");
+                      }}
                       className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600"
                     />
                     <label
@@ -132,7 +158,11 @@ export default function ProductsPage() {
                         name="category"
                         type="radio"
                         checked={selectedCategory === category.id}
-                        onChange={() => setSelectedCategory(category.id)}
+                        onChange={() => {
+                          setSelectedCategory(category.id);
+                          // Update URL when selecting a category
+                          router.push(`/products?category=${category.id}`);
+                        }}
                         className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600"
                       />
                       <label
@@ -200,6 +230,8 @@ export default function ProductsPage() {
                     setSelectedCategory("all");
                     setPriceRange([0, maxPrice]);
                     setSearchQuery("");
+                    // Reset URL when resetting filters
+                    router.push("/products");
                   }}
                   className="inline-flex items-center text-sm text-primary-600 hover:text-primary-700"
                 >
@@ -270,6 +302,8 @@ export default function ProductsPage() {
                       setSelectedCategory("all");
                       setPriceRange([0, maxPrice]);
                       setSearchQuery("");
+                      // Reset URL when resetting filters
+                      router.push("/products");
                     }}
                     className="inline-flex items-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500"
                   >
