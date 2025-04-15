@@ -38,7 +38,7 @@ const bouquets: Omit<Product, "category">[] = [
         description:
             "Beautiful fresh flower bouquet with a perfect blend of colors",
         inStock: true,
-        isPopular: true,
+        isPopular: false,
     },
     {
         name: "ช่อดูเก้ดอกไม้สด",
@@ -65,7 +65,7 @@ const bouquets: Omit<Product, "category">[] = [
         description:
             "Beautiful fresh flower bouquet with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "ช่อดูเก้ดอกไม้สด",
@@ -74,7 +74,7 @@ const bouquets: Omit<Product, "category">[] = [
         description:
             "Beautiful fresh flower bouquet with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "ช่อดูเก้ดอกไม้สด",
@@ -269,7 +269,7 @@ const velvetWireFloralArt: Omit<Product, "category">[] = [
         description:
             "Beautiful velvet wire floral art with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "ดอกไม้ลวดกำมะหยี่",
@@ -308,7 +308,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "แกะสลักดอกไม้ไทย",
@@ -326,7 +326,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พานดอกไม้ไทย",
@@ -335,7 +335,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พานดอกไม้ไทย",
@@ -362,7 +362,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พานดอกไม้ไทย",
@@ -371,7 +371,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พานดอกไม้ไทย",
@@ -380,7 +380,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พวงมาลัยดอกไม้ไทย",
@@ -389,7 +389,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พวงมาลัยดอกไม้ไทย",
@@ -407,7 +407,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พวงมาลัยดอกไม้ไทย",
@@ -425,7 +425,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
     {
         name: "พวงมาลัยดอกไม้ไทย",
@@ -434,7 +434,7 @@ const thaiFloralCraft: Omit<Product, "category">[] = [
         description:
             "Beautiful thai floral craft with a perfect blend of colors",
         inStock: true,
-        isPopular: false,
+        isPopular: true,
     },
 ];
 
