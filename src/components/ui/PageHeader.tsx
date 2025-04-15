@@ -8,6 +8,8 @@ interface PageHeaderProps {
   subtitle?: string;
   backgroundImage?: string;
   align?: "left" | "center";
+  titleColor?: string;
+  subtitleColor?: string;
 }
 
 export default function PageHeader({
@@ -15,6 +17,8 @@ export default function PageHeader({
   subtitle,
   backgroundImage,
   align = "center",
+  titleColor = "text-primary-800",
+  subtitleColor = "text-primary-500",
 }: PageHeaderProps) {
   const [currentBgImage, setCurrentBgImage] = useState<string | undefined>(backgroundImage);
   const [prevBgImage, setPrevBgImage] = useState<string | undefined>(undefined);
@@ -147,12 +151,12 @@ export default function PageHeader({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary-400">
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl tracking-tight ${titleColor}`}>
               {title}
             </h1>
             {subtitle && (
               <motion.p
-                className="mt-4 max-w-3xl mx-auto text-lg text-primary-200"
+                className={`mt-4 max-w-3xl mx-auto text-lg ${subtitleColor}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
