@@ -245,7 +245,7 @@ export default function Home() {
 
             {/* Call to action */}
             <CtaSection
-                title="พร้อมที่จะทำให้วันของใครสักคนสดใหม่ขึ้นมั้ย?"
+                title="พร้อมที่จะทำให้วันของใครสักคนสดใสขึ้นมั้ย?"
                 subtitle="สั่งซื้อดอกไม้สวยๆ สำหรับทุกโอกาส"
                 primaryButtonText="เลือกซื้อสินค้า"
                 primaryButtonLink="/products"
