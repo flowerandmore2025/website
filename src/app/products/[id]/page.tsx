@@ -56,7 +56,7 @@ export default function ProductPage({params}: { params: { id: string } }) {
                                     href={`/products?category=${category.id}`}
                                     className="hover:text-primary-600"
                                 >
-                                    {category.name}
+                                    {category.nameInThai}
                                 </Link>
                             </li>
                         )}

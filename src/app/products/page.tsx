@@ -23,31 +23,59 @@ export default function ProductsPage() {
     ? categoryParam
     : "all";
 
+  // Get price range from URL or default values
+  const minPriceParam = searchParams.get("minPrice");
+  const maxPriceParam = searchParams.get("maxPrice");
+  const initialMinPrice = minPriceParam && !isNaN(Number(minPriceParam)) ? Number(minPriceParam) : 100;
+  const initialMaxPrice = maxPriceParam && !isNaN(Number(maxPriceParam)) ? Number(maxPriceParam) : products.maxPrice;
+
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [priceRange, setPriceRange] = useState<[number, number]>([
-    100,
-    products.maxPrice,
+    initialMinPrice,
+    initialMaxPrice,
   ]);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  // Avoid hydration mismatch and sync URL with selected category
+  // Function to update URL with current filters
+  const updateURL = () => {
+    if (!isClient) return;
+
+    const params = new URLSearchParams();
+
+    // Add category parameter if not "all"
+    if (selectedCategory !== "all") {
+      params.set("category", selectedCategory);
+    }
+
+    // Add price range parameters if they differ from defaults
+    if (priceRange[0] !== 100) {
+      params.set("minPrice", priceRange[0].toString());
+    }
+
+    if (priceRange[1] !== products.maxPrice) {
+      params.set("maxPrice", priceRange[1].toString());
+    }
+
+    // Create the URL path with query parameters
+    const queryString = params.toString();
+    const url = queryString ? `/products?${queryString}` : "/products";
+
+    router.push(url);
+  };
+
+  // Avoid hydration mismatch and sync URL with filters
   useEffect(() => {
     setIsClient(true);
+  }, []);
 
-    // If the URL doesn't match the selected category, update it
-    // This ensures URL is in sync with the selected category
+  // Update URL when filters change
+  useEffect(() => {
     if (isClient) {
-      const currentCategoryParam = searchParams.get("category");
-
-      if (selectedCategory !== "all" && currentCategoryParam !== selectedCategory) {
-        router.push(`/products?category=${selectedCategory}`);
-      } else if (selectedCategory === "all" && currentCategoryParam) {
-        router.push("/products");
-      }
+      updateURL();
     }
-  }, [isClient, selectedCategory, searchParams, router]);
+  }, [isClient, selectedCategory, priceRange[0], priceRange[1]]);
 
   const filteredProducts = products.products.filter((product) => {
     const matchesCategory =
@@ -139,8 +167,7 @@ export default function ProductsPage() {
                       checked={selectedCategory === "all"}
                       onChange={() => {
                         setSelectedCategory("all");
-                        // Update URL when selecting "all" category (remove category param)
-                        router.push("/products");
+                        // URL will be updated by the useEffect
                       }}
                       className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600"
                     />
@@ -160,8 +187,7 @@ export default function ProductsPage() {
                         checked={selectedCategory === category.id}
                         onChange={() => {
                           setSelectedCategory(category.id);
-                          // Update URL when selecting a category
-                          router.push(`/products?category=${category.id}`);
+                          // URL will be updated by the useEffect
                         }}
                         className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600"
                       />
@@ -195,9 +221,9 @@ export default function ProductsPage() {
                       step="10"
                       max={maxPrice}
                       value={priceRange[1]}
-                      onChange={(e) =>
-                        setPriceRange([priceRange[0], Number(e.target.value)])
-                      }
+                      onChange={(e) => {
+                        setPriceRange([priceRange[0], Number(e.target.value)]);
+                      }}
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
                     />
                   </div>
@@ -228,7 +254,7 @@ export default function ProductsPage() {
                 <button
                   onClick={() => {
                     setSelectedCategory("all");
-                    setPriceRange([0, maxPrice]);
+                    setPriceRange([100, maxPrice]);
                     setSearchQuery("");
                     // Reset URL when resetting filters
                     router.push("/products");
@@ -300,7 +326,7 @@ export default function ProductsPage() {
                   <button
                     onClick={() => {
                       setSelectedCategory("all");
-                      setPriceRange([0, maxPrice]);
+                      setPriceRange([100, maxPrice]);
                       setSearchQuery("");
                       // Reset URL when resetting filters
                       router.push("/products");
