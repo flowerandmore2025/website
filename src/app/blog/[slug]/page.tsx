@@ -15,9 +15,9 @@ import {
 import * as motion from "motion/react-client";
 
 // Helper function to get related posts
-const getRelatedPosts = (currentId: string, category: string) => {
+const getRelatedPosts = (currentSlug: string, category: string) => {
   return blog.posts
-    .filter((post) => post.id !== currentId && post.category === category)
+    .filter((post) => post.slug !== currentSlug && post.category === category)
     .slice(0, 2);
 };
 
@@ -30,18 +30,18 @@ const formatDate = (dateString: string) => {
   });
 };
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const [isSaved, setIsSaved] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const post = blog.posts.find((p) => p.id === params.id);
+  const post = blog.posts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
   const category = blog.categories.find((c) => c.id === post.category);
-  const relatedPosts = getRelatedPosts(post.id, post.category);
+  const relatedPosts = getRelatedPosts(post.slug, post.category);
 
   // Assume content is a long string, we'll split it into paragraphs for better formatting
   const contentParagraphs = post.content
@@ -262,7 +262,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
                 >
                   <Link
-                    href={`/blog/${relatedPost.id}`}
+                    href={`/blog/${relatedPost.slug}`}
                     className="group block"
                   >
                     <div className="aspect-[16/9] w-full rounded-lg bg-primary-100 overflow-hidden mb-3">
