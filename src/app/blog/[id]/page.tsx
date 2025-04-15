@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import blog from "@/data/blog.json";
+import blog from "@/data/blog";
 import {
   ChevronLeftIcon,
   CalendarIcon,

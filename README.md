@@ -45,7 +45,7 @@ src/
 ├── components/          # Reusable React components
 ├── data/               # Data files
 │   ├── products.ts    # Product catalog data
-│   ├── blog.json      # Blog posts data
+│   ├── blog.ts        # Blog posts data
 │   ├── reviews.json   # Customer reviews data
 │   └── faqs.ts        # FAQ data
 └── styles/            # Global styles and Tailwind config
@@ -56,7 +56,7 @@ src/
 All dynamic content is stored in JSON and TypeScript files under the `src/data` directory:
 
 - `products.ts`: Product catalog with categories
-- `blog.json`: Blog posts and categories
+- `blog.ts`: Blog posts and categories
 - `reviews.json`: Customer reviews and ratings
 - `faqs.ts`: Frequently asked questions
 

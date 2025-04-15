@@ -1,4 +1,27 @@
-{
+interface BlogPost {
+  id: string;
+  title: string;
+  titleInThai?: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  author: string;
+  date: string;
+  category: string;
+}
+
+interface BlogCategory {
+  id: string;
+  name: string;
+  nameInThai: string;
+}
+
+interface BlogData {
+  posts: BlogPost[];
+  categories: BlogCategory[];
+}
+
+const blog: BlogData = {
   "posts": [
     {
       "id": "1",
@@ -29,4 +52,6 @@
       "nameInThai": "ข่าวสาร"
     }
   ]
-} 
+};
+
+export default blog;
