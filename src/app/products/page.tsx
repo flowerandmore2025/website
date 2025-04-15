@@ -96,11 +96,28 @@ export default function ProductsPage() {
     return null; // Avoid hydration issues by not rendering until client-side
   }
 
+  // Get the appropriate background image based on selected category
+  const getBackgroundImage = () => {
+    if (selectedCategory === "all") {
+      return "/images/hero/bouquets.png"; // Default image for all categories
+    }
+
+    // Map category IDs to their respective background images
+    const categoryImages: Record<string, string> = {
+      "bouquets": "/images/hero/bouquets.png",
+      "nature_inspired_floral_creation": "/images/hero/nature_inspired_floral_creation.png",
+      "velvet_wire_floral_art": "/images/hero/velvet_wire_floral_art.png",
+      "thai_floral_craft": "/images/hero/thai_floral_craft.png"
+    };
+
+    return categoryImages[selectedCategory] || "/images/hero/bouquets.png";
+  };
+
   return (
     <div>
       <PageHeader
         title="สินค้าของเรา"
-        backgroundImage="/images/hero/bouquet.png"
+        backgroundImage={getBackgroundImage()}
         subtitle="สำรวจคอลเลกชันการจัดดอกไม้และของขวัญสุดสวยของเรา"
       />
 

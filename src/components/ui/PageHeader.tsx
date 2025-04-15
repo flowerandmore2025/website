@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import * as motion from "motion/react-client";
 
 interface PageHeaderProps {
@@ -15,17 +16,74 @@ export default function PageHeader({
   backgroundImage,
   align = "center",
 }: PageHeaderProps) {
+  const [currentBgImage, setCurrentBgImage] = useState<string | undefined>(backgroundImage);
+  const [prevBgImage, setPrevBgImage] = useState<string | undefined>(undefined);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Handle background image transitions
+  useEffect(() => {
+    // Initial load - just set the image without transition
+    if (!currentBgImage && backgroundImage) {
+      setCurrentBgImage(backgroundImage);
+      return;
+    }
+
+    if (backgroundImage !== currentBgImage) {
+      // Keep the previous image for cross-fade
+      setPrevBgImage(currentBgImage);
+
+      // Update to new image immediately
+      setCurrentBgImage(backgroundImage);
+
+      // Start transition
+      setIsTransitioning(true);
+
+      // Reset transition state after animation completes
+      const resetTimer = setTimeout(() => {
+        setIsTransitioning(false);
+        setPrevBgImage(undefined);
+      }, 3100); // Match this with the CSS transition duration + small buffer
+
+      return () => {
+        clearTimeout(resetTimer);
+      };
+    }
+  }, [backgroundImage, currentBgImage]);
   return (
     <div className="relative overflow-hidden bg-primary-100">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        {backgroundImage ? (
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImage})` }}
-          >
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
-          </div>
+        {currentBgImage ? (
+          <>
+            {/* Both images are always present, with the top one fading out */}
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Bottom layer: Current image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${currentBgImage})`,
+                  zIndex: 0
+                }}
+              >
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
+              </div>
+
+              {/* Top layer: Previous image that fades out */}
+              {prevBgImage && (
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${prevBgImage})`,
+                    opacity: isTransitioning ? 0 : 1,
+                    transition: 'opacity 3000ms cubic-bezier(0.22, 0.61, 0.36, 1)', // Very gentle easing
+                    zIndex: 1
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
+                </div>
+              )}
+            </div>
+          </>
         ) : (
           <>
             {/* Abstract pattern background when no image */}
