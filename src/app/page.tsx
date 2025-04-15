@@ -73,7 +73,7 @@ export default function Home() {
                             Phuket Flower Shop
                         </h1>
                         <p className="mt-6 text-lg leading-8 text-gray-700 max-w-lg">
-                            ดอกไม้แทนคำพูดจากใจ ส่งมอบความรู้สึกดีๆส่อม
+                            ดอกไม้แทนคำพูดจากใจ ส่งมอบความรู้สึกดีๆให้กับคนสำคัญของคุณ
                         </p>
                         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
                             <motion.div
