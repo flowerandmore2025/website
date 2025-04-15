@@ -29,11 +29,15 @@ export const metadata: Metadata = {
   title: "Flower & More | Same-Day Flower Delivery & Wedding Bouquets in Phuket",
   description:
     "Brighten any moment with Flower & More! We offer same-day flower delivery across Phuket and beautiful floral designs for weddings and special events. Fresh, friendly, and always blooming!",
-  icons: [
-    { rel: "icon", url: "/images/logo-square.png" },
-    { rel: "apple-touch-icon", url: "/images/logo-square.png" },
-    { rel: "shortcut icon", url: "/images/logo-square.png" }
-  ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/logo-square.png" }
+    ],
+    apple: [
+      { url: "/images/logo-square.png" }
+    ]
+  },
 };
 
 export default function RootLayout({
@@ -47,7 +51,9 @@ export default function RootLayout({
       className={`${inter.variable} ${prompt.variable} ${playfair.variable}`}
     >
       <head>
-        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/logo-square.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/logo-square.png" />
       </head>
       <body className="min-h-screen flex flex-col">
         {/* Global Abstract flower background */}
