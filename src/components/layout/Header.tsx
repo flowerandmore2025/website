@@ -20,10 +20,10 @@ export default function Header() {
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Flower & More</span>
             <Image
-              src="/logo.svg"
+              src="/images/logo.png"
               alt="Flower & More"
-              width={120}
-              height={40}
+              width={150}
+              height={150}
               className="h-8 w-auto"
             />
           </Link>

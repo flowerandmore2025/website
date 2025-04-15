@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +13,7 @@ import {
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import * as motion from "motion/react-client";
+import HtmlContent from "@/components/ui/HtmlContent";
 
 // Helper function to get related posts
 const getRelatedPosts = (currentSlug: string, category: string) => {
@@ -42,12 +43,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const category = blog.categories.find((c) => c.id === post.category);
   const relatedPosts = getRelatedPosts(post.slug, post.category);
-
-  // Assume content is a long string, we'll split it into paragraphs for better formatting
-  const contentParagraphs = post.content
-    .split("...")
-    .map((p) => p.trim())
-    .filter((p) => p.length > 0);
 
   // Handle share functionality
   const handleShare = () => {
@@ -119,11 +114,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-white">
               {post.title}
             </h1>
-            {post.titleInThai && (
-              <p className="mt-2 text-xl text-white/90 font-light">
-                {post.titleInThai}
-              </p>
-            )}
           </div>
         </motion.div>
       </div>
@@ -161,7 +151,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   ? "text-primary-600"
                   : "text-gray-600 hover:text-primary-600"
               }`}
-              aria-label={isSaved ? "Unsave article" : "Save article"}
+              aria-label={isSaved ? "Unsaved article" : "Save article"}
             >
               <BookmarkIcon
                 className={`w-5 h-5 ${isSaved ? "fill-current" : ""}`}
@@ -198,26 +188,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         {/* Article content */}
         <div className="prose prose-lg prose-primary max-w-none">
-          {contentParagraphs.length > 0 ? (
-            contentParagraphs.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-              >
-                {paragraph}...
-              </motion.p>
-            ))
-          ) : (
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              {post.content}
+              <HtmlContent content={post.content} />
             </motion.p>
-          )}
         </div>
 
         {/* Author bio */}
@@ -237,7 +214,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <h3 className="text-lg font-medium text-gray-900">
                 {post.author}
               </h3>
-              <p className="text-sm text-gray-600">Flower Arrangement Expert</p>
+              <p className="text-sm text-gray-600">ผู้หลงใหลในการจัดแต่งดอกไม้</p>
             </div>
           </div>
         </motion.div>
@@ -256,7 +233,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="grid sm:grid-cols-2 gap-6">
               {relatedPosts.map((relatedPost, index) => (
                 <motion.div
-                  key={relatedPost.id}
+                  key={relatedPost.slug}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
