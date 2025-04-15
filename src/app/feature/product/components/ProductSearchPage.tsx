@@ -70,7 +70,8 @@ export default function ProductSearchPage() {
     const queryString = params.toString();
     const url = queryString ? `/products?${queryString}` : "/products";
 
-    router.push(url);
+    // Use replace instead of push and set scroll to false to prevent scrolling to top
+    router.replace(url, { scroll: false });
   };
 
   // Avoid hydration mismatch and sync URL with filters
@@ -282,8 +283,8 @@ export default function ProductSearchPage() {
                     setSelectedCategory("all");
                     setPriceRange([100, maxPrice]);
                     setSearchQuery("");
-                    // Reset URL when resetting filters
-                    router.push("/products");
+                    // Reset URL when resetting filters without scrolling to top
+                    router.replace("/products", { scroll: false });
                   }}
                   className="inline-flex items-center text-sm text-primary-600 hover:text-primary-700"
                 >
@@ -376,7 +377,7 @@ export default function ProductSearchPage() {
                       setSelectedCategory("all");
                       setPriceRange([100, maxPrice]);
                       setSearchQuery("");
-                      router.push("/products");
+                      router.replace("/products", { scroll: false });
                     }}
                     className="inline-flex items-center rounded-md border border-primary-300 bg-white px-3 py-1.5 text-sm font-medium text-primary-700 shadow-sm hover:bg-primary-50 focus:outline-none"
                   >
@@ -424,8 +425,8 @@ export default function ProductSearchPage() {
                       setSelectedCategory("all");
                       setPriceRange([100, maxPrice]);
                       setSearchQuery("");
-                      // Reset URL when resetting filters
-                      router.push("/products");
+                      // Reset URL when resetting filters without scrolling to top
+                      router.replace("/products", { scroll: false });
                     }}
                     className="inline-flex items-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500"
                   >
