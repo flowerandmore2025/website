@@ -63,7 +63,7 @@ export default function SectionContainer({
           <div className="max-w-3xl mx-auto text-center mb-16">
             {title && (
               <motion.h2
-                className="text-3xl font-display font-bold tracking-tight text-gray-900 sm:text-4xl"
+                className="text-3xl tracking-tight text-gray-900 sm:text-4xl"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

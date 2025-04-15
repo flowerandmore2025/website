@@ -176,7 +176,7 @@ export default function Home() {
             </SectionContainer>
 
             {/* Testimonials section */}
-            <SectionContainer title="เสียงจากลูกค้า" background="white">
+            <SectionContainer title="ลูกค้าพูดถึงเรา" background="white">
                 <div
                     className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                     {[
