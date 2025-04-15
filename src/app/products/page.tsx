@@ -243,7 +243,7 @@ export default function ProductsPage() {
                 )}
                 {(priceRange[0] > 0 || priceRange[1] < maxPrice) && (
                   <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                    {priceRange[0]} - {priceRange[1]}
+                    ราคา {priceRange[0]} บาท - {priceRange[1]} บาท
                   </span>
                 )}
               </div>
@@ -301,8 +301,8 @@ export default function ProductsPage() {
 
       {/* Call to action */}
       <CtaSection
-        title="Can't find what you're looking for?"
-        subtitle="Contact us for custom flower arrangements tailored to your needs"
+        title="ไม่เจอสิ่งที่คุณต้องการใช่ไหม?"
+        subtitle="ติดต่อเราสำหรับการจัดดอกไม้ที่กำหนดเองตามความต้องการของคุณ"
         primaryButtonText="Contact Us"
         primaryButtonLink="/contact"
         withFlower={true}
