@@ -147,12 +147,12 @@ export default function PageHeader({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary-400">
               {title}
             </h1>
             {subtitle && (
               <motion.p
-                className="mt-4 max-w-3xl mx-auto text-lg text-gray-800"
+                className="mt-4 max-w-3xl mx-auto text-lg text-primary-200"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}

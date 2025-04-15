@@ -5,6 +5,7 @@ import * as motion from "motion/react-client";
 import Link from "next/link";
 import { gsap } from "gsap";
 import ImageHoverEffect from "@/components/animations/ImageHoverEffect";
+import ProductHoverFlowers from "@/components/animations/ProductHoverFlowers";
 
 interface EnhancedProductCardProps {
   product: any;
@@ -21,15 +22,15 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
 
     const card = cardRef.current;
     const shine = shineRef.current;
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       const { left, top, width, height } = card.getBoundingClientRect();
       const x = e.clientX - left;
       const y = e.clientY - top;
-      
+
       const posX = (x / width) * 100;
       const posY = (y / height) * 100;
-      
+
       gsap.to(shine, {
         opacity: 0.15,
         x: `${posX}%`,
@@ -38,19 +39,19 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         ease: "power2.out"
       });
     };
-    
+
     const handleMouseEnter = () => {
       gsap.to(shine, { opacity: 0.15, duration: 0.3 });
     };
-    
+
     const handleMouseLeave = () => {
       gsap.to(shine, { opacity: 0, duration: 0.3 });
     };
-    
+
     card.addEventListener("mousemove", handleMouseMove);
     card.addEventListener("mouseenter", handleMouseEnter);
     card.addEventListener("mouseleave", handleMouseLeave);
-    
+
     return () => {
       card.removeEventListener("mousemove", handleMouseMove);
       card.removeEventListener("mouseenter", handleMouseEnter);
@@ -69,7 +70,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         whileHover={{ y: -4 }}
       >
         {/* Shine effect overlay */}
-        <div 
+        <div
           ref={shineRef}
           className="absolute inset-0 pointer-events-none opacity-0 z-10"
           style={{
@@ -80,7 +81,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
             borderRadius: "50%"
           }}
         />
-        
+
         {/* Popular badge */}
         {product.isPopular && (
           <div className="absolute top-3 right-3 z-10">
@@ -114,7 +115,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-        
+
         {/* Content */}
         <div className="p-5">
           <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
@@ -127,9 +128,16 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
             THB {product.price.toLocaleString()}
           </p>
         </div>
-        
+
         {/* Hover effect overlay */}
         <div className="absolute inset-0 pointer-events-none bg-primary-600/0 group-hover:bg-primary-600/5 transition-colors duration-300" />
+
+        {/* Flower micro animations */}
+        <ProductHoverFlowers
+          containerRef={cardRef}
+          count={10}
+          colors={["#FF9AA2", "#FFB7B2", "#FFDAC1", "#E2F0CB", "#B5EAD7"]}
+        />
       </motion.div>
     </Link>
   );
