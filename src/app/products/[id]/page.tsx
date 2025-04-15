@@ -11,6 +11,13 @@ const getRelatedProducts = (categoryId: string, currentId: string) => {
     .slice(0, 4);
 };
 
+// Generate static paths for all products
+export async function generateStaticParams() {
+  return products.products.map((product) => ({
+    id: product.id,
+  }));
+}
+
 // Generate metadata for the product page
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const product = products.products.find((p) => p.id === params.id);

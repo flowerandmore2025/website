@@ -1,5 +1,21 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import blog from "@/data/blog";
+import { baseUrl } from "@/constants";
+
+// Generate metadata for the blog page
+export const metadata: Metadata = {
+  title: "Blog | Phuket Flower Shop",
+  description: "Read our latest articles about flowers, arrangements, and more.",
+  openGraph: {
+    title: "Blog | Phuket Flower Shop",
+    description: "Read our latest articles about flowers, arrangements, and more.",
+    url: new URL("/blog", baseUrl).toString(),
+    siteName: "Phuket Flower Shop",
+    locale: "th_TH",
+    type: "website",
+  },
+};
 
 export default function BlogPage() {
   return (
