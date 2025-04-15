@@ -137,7 +137,7 @@ export default function PageHeader({
 
       {/* Content */}
       <div
-        className={`relative py-20 sm:py-32 px-6 ${
+        className={`relative py-24 sm:py-40 px-10 ${
           align === "center" ? "text-center" : "text-left"
         }`}
       >
