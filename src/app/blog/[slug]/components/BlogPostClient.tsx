@@ -56,7 +56,7 @@ export default function BlogPostClient({
 
   return (
     <motion.div
-      className="bg-white py-10 sm:py-16"
+      className="bg-white pb-10 sm:py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

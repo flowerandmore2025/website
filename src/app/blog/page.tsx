@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-10 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
             บทความ
           </h2>
           <div className="w-24 h-1 bg-primary-300 mx-auto mb-6"></div>
@@ -58,7 +58,7 @@ export default function BlogPage() {
                         day: "numeric",
                       })}
                     </time>
-                    <span className="relative z-10 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-600 hover:bg-primary-200">
+                    <span className="relative z-1 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-600 hover:bg-primary-200">
                       {blog.categories.find(cat => cat.id === post.category)?.nameInThai || post.category}
                     </span>
                   </div>

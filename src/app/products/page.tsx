@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { baseUrl } from "@/constants";
 
-// Generate metadata for the products page
 export const metadata: Metadata = {
   title: "Products | Phuket Flower Shop",
   description: "Browse our collection of beautiful flower arrangements and gifts.",

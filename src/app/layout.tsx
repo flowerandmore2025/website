@@ -26,7 +26,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Flower & More | Same-Day Flower Delivery & Wedding Bouquets in Phuket",
+  title: "Flower & More | Same-Day Flower Delivery in Phuket",
   description:
     "Brighten any moment with Flower & More! We offer same-day flower delivery across Phuket and beautiful floral designs for weddings and special events. Fresh, friendly, and always blooming!",
   icons: {

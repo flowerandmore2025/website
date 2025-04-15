@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const imageUrl = post.image ? new URL(post.image, baseUrl).toString() : undefined;
 
   return {
-    title: `${post.title} | Phuket Flower Shop Blog`,
+    title: `${post.title} | Flower & More`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
