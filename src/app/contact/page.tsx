@@ -41,9 +41,23 @@ export default function Contact() {
                 <div className="flex-shrink-0">
                   <PhoneIcon className="h-6 w-6 text-primary-200" />
                 </div>
-                <div className="ml-4">
+                <div className="ml-4 w-full">
                   <p className="text-base font-medium">เบอร์โทร</p>
-                  <p className="mt-1">+66 76 123 456</p>
+                  <div className="mt-1 space-y-1">
+                    {[
+                      "0612394924",
+                      "0897248956"
+                    ].map((phone, index) => (
+                      <div key={index} className="flex items-center">
+                        <a
+                          href={`tel:${phone}`}
+                          className="hover:text-primary-200 transition-colors duration-200 flex items-center"
+                        >
+                          <span className="block">{phone}</span>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -51,9 +65,23 @@ export default function Contact() {
                 <div className="flex-shrink-0">
                   <EnvelopeIcon className="h-6 w-6 text-primary-200" />
                 </div>
-                <div className="ml-4">
+                <div className="ml-4 w-full">
                   <p className="text-base font-medium">อีเมล</p>
-                  <p className="mt-1">info@phuketflowershop.com</p>
+                  <div className="mt-1 space-y-1">
+                    {[
+                      "kanompung2521@gmail.com",
+                      "Chanaphonnok.2528@gmail.com"
+                    ].map((email, index) => (
+                      <div key={index} className="flex items-center">
+                        <a
+                          href={`mailto:${email}`}
+                          className="hover:text-primary-200 transition-colors duration-200 break-all"
+                        >
+                          {email}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -64,7 +92,7 @@ export default function Contact() {
                 <div className="ml-4">
                   <p className="text-base font-medium">ที่ตั้ง</p>
                   <p className="mt-1">
-                    123 Thepkrasattri Rd, Phuket 83110, Thailand
+                    9/22 มบ.โกลเด้นวิล 2 ต.กะทู้ อ.กะทู้ จ.ภูเก็ต 83120
                   </p>
                 </div>
               </div>
