@@ -66,7 +66,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1, duration: 0.4 }}
+        transition={{ delay: index * 0.1, duration: 0.2 }}
         whileHover={{ y: -4 }}
       >
         {/* Shine effect overlay */}
