@@ -3,7 +3,7 @@ export const navigation = [
   { name: "สินค้า", href: "/products" },
   { name: "คำถามที่พบบ่อย", href: "/faq" },
   { name: "บทความ", href: "/blog" },
-  { name: "นโยบาย", href: "/policy" },
+  // { name: "นโยบาย", href: "/policy" },
   { name: "ติดต่อเรา", href: "/contact" },
 ];
 

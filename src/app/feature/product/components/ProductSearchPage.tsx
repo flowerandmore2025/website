@@ -129,6 +129,8 @@ export default function ProductSearchPage() {
         title="สินค้าของเรา"
         backgroundImage={getBackgroundImage()}
         subtitle="สำรวจคอลเลกชันการจัดดอกไม้และของขวัญสุดสวยของเรา"
+        titleColor="text-white"
+        subtitleColor="text-white"
       />
 
       <SectionContainer background="white">

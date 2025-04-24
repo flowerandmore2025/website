@@ -78,9 +78,7 @@ export default function FAQPage() {
                         as="dd"
                         className="px-6 pb-5 pr-12 bg-gray-50 border-t border-gray-100"
                       >
-                        <p className="text-base leading-7 text-gray-600 pt-4">
-                          {faq.answer}
-                        </p>
+                        <div className="text-base leading-7 text-gray-600 pt-4" dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
                       </Disclosure.Panel>
                     </>
                   )}
