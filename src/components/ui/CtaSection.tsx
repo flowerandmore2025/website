@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import * as motion from "motion/react-client"
-import Link from "next/link";
+import { ReactNode } from 'react';
+import * as motion from 'motion/react-client';
+import Link from 'next/link';
 
 interface CtaSectionProps {
   title: string;
@@ -20,7 +20,7 @@ export default function CtaSection({
   title,
   subtitle,
   primaryButtonText,
-  primaryButtonLink = "/contact",
+  primaryButtonLink = '/contact',
   secondaryButtonText,
   secondaryButtonLink,
   bgImage,
@@ -104,17 +104,12 @@ export default function CtaSection({
           </h2>
 
           {subtitle && (
-            <p className="mx-auto mt-4 max-w-xl text-lg leading-8 text-white/80">
-              {subtitle}
-            </p>
+            <p className="mx-auto mt-4 max-w-xl text-lg leading-8 text-white/80">{subtitle}</p>
           )}
 
           <div className="mt-8 flex items-center justify-center gap-x-6">
             {primaryButtonText && (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href={primaryButtonLink}
                   className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary-600 shadow-sm hover:bg-gray-100 transition-colors duration-300"
@@ -124,10 +119,7 @@ export default function CtaSection({
               </motion.div>
             )}
             {secondaryButtonText && secondaryButtonLink && (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href={secondaryButtonLink}
                   className="text-sm font-semibold leading-6 text-white flex items-center"

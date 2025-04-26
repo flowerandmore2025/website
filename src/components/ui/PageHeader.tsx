@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import * as motion from "motion/react-client";
+import { useState, useEffect } from 'react';
+import * as motion from 'motion/react-client';
 
 interface PageHeaderProps {
   title: string;
   subtitle?: string;
   backgroundImage?: string;
-  align?: "left" | "center";
+  align?: 'left' | 'center';
   titleColor?: string;
   subtitleColor?: string;
 }
@@ -16,9 +16,9 @@ export default function PageHeader({
   title,
   subtitle,
   backgroundImage,
-  align = "center",
-  titleColor = "text-primary-800",
-  subtitleColor = "text-primary-500",
+  align = 'center',
+  titleColor = 'text-primary-800',
+  subtitleColor = 'text-primary-500',
 }: PageHeaderProps) {
   const [currentBgImage, setCurrentBgImage] = useState<string | undefined>(backgroundImage);
   const [prevBgImage, setPrevBgImage] = useState<string | undefined>(undefined);
@@ -66,7 +66,7 @@ export default function PageHeader({
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${currentBgImage})`,
-                  zIndex: 0
+                  zIndex: 0,
                 }}
               >
                 <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
@@ -80,7 +80,7 @@ export default function PageHeader({
                     backgroundImage: `url(${prevBgImage})`,
                     opacity: isTransitioning ? 0 : 1,
                     transition: 'opacity 3000ms cubic-bezier(0.22, 0.61, 0.36, 1)', // Very gentle easing
-                    zIndex: 1
+                    zIndex: 1,
                   }}
                 >
                   <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
@@ -92,18 +92,9 @@ export default function PageHeader({
           <>
             {/* Abstract pattern background when no image */}
             <div className="absolute inset-0 opacity-10">
-              <svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <pattern
-                    id="smallGrid"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
+                  <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
                     <circle
                       cx="10"
                       cy="10"
@@ -114,12 +105,7 @@ export default function PageHeader({
                       className="text-primary-600"
                     />
                   </pattern>
-                  <pattern
-                    id="grid"
-                    width="80"
-                    height="80"
-                    patternUnits="userSpaceOnUse"
-                  >
+                  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
                     <rect width="80" height="80" fill="url(#smallGrid)" />
                     <circle
                       cx="40"
@@ -142,7 +128,7 @@ export default function PageHeader({
       {/* Content */}
       <div
         className={`relative py-24 sm:py-40 px-10 ${
-          align === "center" ? "text-center" : "text-left"
+          align === 'center' ? 'text-center' : 'text-left'
         }`}
       >
         <div className="max-w-5xl mx-auto">

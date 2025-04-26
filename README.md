@@ -26,11 +26,13 @@ A modern e-commerce website for a flower shop in Phuket, built with Next.js, Typ
 ## Getting Started
 
 1. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 2. Run the development server:
+
    ```bash
    pnpm dev
    ```

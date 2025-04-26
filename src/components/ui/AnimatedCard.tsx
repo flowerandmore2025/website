@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import * as motion from "motion/react-client"
-import Image from "next/image";
-import Link from "next/link";
+import { ReactNode } from 'react';
+import * as motion from 'motion/react-client';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface AnimatedCardProps {
   title: string;
@@ -22,11 +22,11 @@ export default function AnimatedCard({
   subtitle,
   content,
   imageSrc,
-  imageAlt = "Card image",
+  imageAlt = 'Card image',
   icon,
   href,
   index = 0,
-  className = "",
+  className = '',
 }: AnimatedCardProps) {
   const cardContent = (
     <motion.div
@@ -50,9 +50,7 @@ export default function AnimatedCard({
         </div>
       ) : icon ? (
         <div className="pt-6 pb-2 flex justify-center">
-          <div className="h-12 w-12 text-primary-600 flex items-center justify-center">
-            {icon}
-          </div>
+          <div className="h-12 w-12 text-primary-600 flex items-center justify-center">{icon}</div>
         </div>
       ) : null}
 

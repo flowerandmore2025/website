@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import * as motion from "motion/react-client";
-import Link from "next/link";
-import { gsap } from "gsap";
-import ImageHoverEffect from "@/components/animations/ImageHoverEffect";
-import ProductHoverFlowers from "@/components/animations/ProductHoverFlowers";
+import { useEffect, useRef } from 'react';
+import * as motion from 'motion/react-client';
+import Link from 'next/link';
+import { gsap } from 'gsap';
+import ImageHoverEffect from '@/components/animations/ImageHoverEffect';
+import ProductHoverFlowers from '@/components/animations/ProductHoverFlowers';
 
 interface EnhancedProductCardProps {
   product: any;
@@ -36,7 +36,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         x: `${posX}%`,
         y: `${posY}%`,
         duration: 0.3,
-        ease: "power2.out"
+        ease: 'power2.out',
       });
     };
 
@@ -48,14 +48,14 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
       gsap.to(shine, { opacity: 0, duration: 0.3 });
     };
 
-    card.addEventListener("mousemove", handleMouseMove);
-    card.addEventListener("mouseenter", handleMouseEnter);
-    card.addEventListener("mouseleave", handleMouseLeave);
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseenter', handleMouseEnter);
+    card.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      card.removeEventListener("mousemove", handleMouseMove);
-      card.removeEventListener("mouseenter", handleMouseEnter);
-      card.removeEventListener("mouseleave", handleMouseLeave);
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseenter', handleMouseEnter);
+      card.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
@@ -74,11 +74,12 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
           ref={shineRef}
           className="absolute inset-0 pointer-events-none opacity-0 z-10"
           style={{
-            background: "radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%)",
-            width: "100px",
-            height: "100px",
-            transform: "translate(-50%, -50%)",
-            borderRadius: "50%"
+            background:
+              'radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%)',
+            width: '100px',
+            height: '100px',
+            transform: 'translate(-50%, -50%)',
+            borderRadius: '50%',
           }}
         />
 
@@ -124,9 +125,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
           {/*<p className="mt-1 text-sm text-gray-600">*/}
           {/*  Crafted by {product.craftedBy}*/}
           {/*</p>*/}
-          <p className="mt-2 font-medium text-primary-600">
-            THB {product.price.toLocaleString()}
-          </p>
+          <p className="mt-2 font-medium text-primary-600">THB {product.price.toLocaleString()}</p>
         </div>
 
         {/* Hover effect overlay */}
@@ -136,7 +135,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         <ProductHoverFlowers
           containerRef={cardRef}
           count={10}
-          colors={["#FF9AA2", "#FFB7B2", "#FFDAC1", "#E2F0CB", "#B5EAD7"]}
+          colors={['#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7']}
         />
       </motion.div>
     </Link>

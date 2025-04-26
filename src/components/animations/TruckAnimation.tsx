@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function TruckAnimation() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -12,32 +12,32 @@ export default function TruckAnimation() {
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
     // Animate the truck
-    tl.to(svgRef.current.querySelector("#truck-body"), {
+    tl.to(svgRef.current.querySelector('#truck-body'), {
       x: 5,
       duration: 0.5,
-      ease: "power1.inOut",
+      ease: 'power1.inOut',
       yoyo: true,
       repeat: 1,
     })
       .to(
-        svgRef.current.querySelector("#truck-wheel1"),
+        svgRef.current.querySelector('#truck-wheel1'),
         {
           rotate: 360,
-          transformOrigin: "center",
+          transformOrigin: 'center',
           duration: 0.8,
-          ease: "none",
+          ease: 'none',
         },
-        "<"
+        '<'
       )
       .to(
-        svgRef.current.querySelector("#truck-wheel2"),
+        svgRef.current.querySelector('#truck-wheel2'),
         {
           rotate: 360,
-          transformOrigin: "center",
+          transformOrigin: 'center',
           duration: 0.8,
-          ease: "none",
+          ease: 'none',
         },
-        "<"
+        '<'
       );
 
     return () => {

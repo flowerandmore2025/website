@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function AbstractFlowerBg() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -10,32 +10,30 @@ export default function AbstractFlowerBg() {
     if (!svgRef.current) return;
 
     // Animate the flower elements
-    const flowers = svgRef.current.querySelectorAll(".abstract-flower");
+    const flowers = svgRef.current.querySelectorAll('.abstract-flower');
 
     flowers.forEach((flower, index) => {
       // Random rotation and scale animation for each flower
       gsap.to(flower, {
-        rotation: `random(${index % 2 === 0 ? "+" : "-"}45, ${
-          index % 2 === 0 ? "+" : "-"
-        }180)`,
+        rotation: `random(${index % 2 === 0 ? '+' : '-'}45, ${index % 2 === 0 ? '+' : '-'}180)`,
         scale: gsap.utils.random(0.9, 1.1),
         duration: gsap.utils.random(3, 6),
         repeat: -1,
         yoyo: true,
-        ease: "sine.inOut",
-        transformOrigin: "center center",
+        ease: 'sine.inOut',
+        transformOrigin: 'center center',
         delay: index * 0.1,
       });
     });
 
     // Animate the connecting lines
-    const lines = svgRef.current.querySelectorAll(".connector");
+    const lines = svgRef.current.querySelectorAll('.connector');
 
-    lines.forEach((line) => {
+    lines.forEach(line => {
       gsap.to(line, {
         strokeDashoffset: 0,
         duration: 10,
-        ease: "none",
+        ease: 'none',
         repeat: -1,
       });
     });
@@ -50,7 +48,7 @@ export default function AbstractFlowerBg() {
   const createPattern = () => {
     const patterns = [];
     const gridSize = 6; // Increased grid size for denser pattern
-    const colors = ["#FF80AB", "#F8BBD0", "#FFECB3", "#E1BEE7", "#D7CCC8"];
+    const colors = ['#FF80AB', '#F8BBD0', '#FFECB3', '#E1BEE7', '#D7CCC8'];
 
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
@@ -110,13 +108,13 @@ export default function AbstractFlowerBg() {
       preserveAspectRatio="none"
       className="w-full h-full"
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
         background:
-          "linear-gradient(to bottom right, rgba(242,232,229,0.7), rgba(255,255,255,0.3))",
+          'linear-gradient(to bottom right, rgba(242,232,229,0.7), rgba(255,255,255,0.3))',
       }}
     >
       <pattern

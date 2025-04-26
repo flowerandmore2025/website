@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   ChevronLeftIcon,
   CalendarIcon,
   UserIcon,
   BookmarkIcon,
   ShareIcon,
-} from "@heroicons/react/24/outline";
-import * as motion from "motion/react-client";
-import HtmlContent from "@/components/ui/HtmlContent";
+} from '@heroicons/react/24/outline';
+import * as motion from 'motion/react-client';
+import HtmlContent from '@/components/ui/HtmlContent';
 
 // Helper function to format date
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 };
 
@@ -28,11 +28,7 @@ interface BlogPostClientProps {
   relatedPosts: any[];
 }
 
-export default function BlogPostClient({
-  post,
-  category,
-  relatedPosts,
-}: BlogPostClientProps) {
+export default function BlogPostClient({ post, category, relatedPosts }: BlogPostClientProps) {
   const [isSaved, setIsSaved] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -45,7 +41,7 @@ export default function BlogPostClient({
           text: post.excerpt,
           url: window.location.href,
         })
-        .catch((error) => console.log("Error sharing", error));
+        .catch(error => console.log('Error sharing', error));
     } else {
       // Fallback for browsers that don't support navigator.share
       navigator.clipboard.writeText(window.location.href);
@@ -64,13 +60,7 @@ export default function BlogPostClient({
       {/* Hero section with image */}
       <div className="relative w-full h-[40vh] sm:h-[50vh] bg-primary-100 mb-10 overflow-hidden">
         {post.image ? (
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
+          <Image src={post.image} alt={post.title} fill className="object-cover" priority />
         ) : (
           <div className="h-full w-full flex items-center justify-center">
             <motion.span
@@ -80,8 +70,8 @@ export default function BlogPostClient({
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
+                repeatType: 'reverse',
+                ease: 'easeInOut',
               }}
             >
               {post.title.charAt(0)}
@@ -139,15 +129,11 @@ export default function BlogPostClient({
             <button
               onClick={() => setIsSaved(!isSaved)}
               className={`flex items-center transition-colors ${
-                isSaved
-                  ? "text-primary-600"
-                  : "text-gray-600 hover:text-primary-600"
+                isSaved ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'
               }`}
-              aria-label={isSaved ? "Unsaved article" : "Save article"}
+              aria-label={isSaved ? 'Unsaved article' : 'Save article'}
             >
-              <BookmarkIcon
-                className={`w-5 h-5 ${isSaved ? "fill-current" : ""}`}
-              />
+              <BookmarkIcon className={`w-5 h-5 ${isSaved ? 'fill-current' : ''}`} />
             </button>
             <div className="relative">
               <button
@@ -173,20 +159,18 @@ export default function BlogPostClient({
 
         {/* Article intro */}
         <div className="mb-10">
-          <p className="text-xl leading-8 text-gray-700 font-medium">
-            {post.excerpt}
-          </p>
+          <p className="text-xl leading-8 text-gray-700 font-medium">{post.excerpt}</p>
         </div>
 
         {/* Article content */}
         <div className="prose prose-lg prose-primary max-w-none">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <HtmlContent content={post.content} />
-            </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <HtmlContent content={post.content} />
+          </motion.p>
         </div>
 
         {/* Author bio */}
@@ -198,14 +182,10 @@ export default function BlogPostClient({
         >
           <div className="flex items-center">
             <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary-100 flex items-center justify-center">
-              <span className="text-xl font-medium text-primary-700">
-                {post.author.charAt(0)}
-              </span>
+              <span className="text-xl font-medium text-primary-700">{post.author.charAt(0)}</span>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">
-                {post.author}
-              </h3>
+              <h3 className="text-lg font-medium text-gray-900">{post.author}</h3>
               <p className="text-sm text-gray-600">ผู้หลงใหลในการจัดแต่งดอกไม้</p>
             </div>
           </div>
@@ -230,10 +210,7 @@ export default function BlogPostClient({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
                 >
-                  <Link
-                    href={`/blog/${relatedPost.slug}`}
-                    className="group block"
-                  >
+                  <Link href={`/blog/${relatedPost.slug}`} className="group block">
                     <div className="aspect-[16/9] w-full rounded-lg bg-primary-100 overflow-hidden mb-3">
                       {relatedPost.image ? (
                         <Image
@@ -254,9 +231,7 @@ export default function BlogPostClient({
                     <h3 className="font-medium text-lg text-gray-900 group-hover:text-primary-600 transition-colors">
                       {relatedPost.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {formatDate(relatedPost.date)}
-                    </p>
+                    <p className="text-sm text-gray-600 mt-1">{formatDate(relatedPost.date)}</p>
                   </Link>
                 </motion.div>
               ))}

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function PhoneAnimation() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -12,25 +12,25 @@ export default function PhoneAnimation() {
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 });
 
     // Animate the phone ringing
-    tl.to(svgRef.current.querySelector("#phone"), {
+    tl.to(svgRef.current.querySelector('#phone'), {
       rotation: -15,
-      transformOrigin: "center",
+      transformOrigin: 'center',
       duration: 0.1,
-      ease: "power1.inOut",
+      ease: 'power1.inOut',
     })
-      .to(svgRef.current.querySelector("#phone"), {
+      .to(svgRef.current.querySelector('#phone'), {
         rotation: 15,
-        transformOrigin: "center",
+        transformOrigin: 'center',
         duration: 0.2,
-        ease: "power1.inOut",
+        ease: 'power1.inOut',
         repeat: 3,
         yoyo: true,
       })
-      .to(svgRef.current.querySelector("#phone"), {
+      .to(svgRef.current.querySelector('#phone'), {
         rotation: 0,
-        transformOrigin: "center",
+        transformOrigin: 'center',
         duration: 0.1,
-        ease: "power1.inOut",
+        ease: 'power1.inOut',
       });
 
     return () => {

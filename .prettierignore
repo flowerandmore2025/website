@@ -1,0 +1,27 @@
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Node modules
+node_modules/
+
+# Public assets
+public/
+
+# Generated files
+*.d.ts
+next-env.d.ts
+*.tsbuildinfo
+
+# Cache
+.eslintcache
+
+# Package files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Misc
+.DS_Store

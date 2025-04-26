@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function CartAnimation() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -12,32 +12,32 @@ export default function CartAnimation() {
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
     // Animate the cart
-    tl.to(svgRef.current.querySelector("#cart-body"), {
+    tl.to(svgRef.current.querySelector('#cart-body'), {
       x: 5,
       duration: 0.3,
-      ease: "power1.inOut",
+      ease: 'power1.inOut',
       yoyo: true,
       repeat: 1,
     })
       .to(
-        svgRef.current.querySelector("#cart-wheel1"),
+        svgRef.current.querySelector('#cart-wheel1'),
         {
           rotate: 360,
-          transformOrigin: "center",
+          transformOrigin: 'center',
           duration: 0.6,
-          ease: "none",
+          ease: 'none',
         },
-        "<"
+        '<'
       )
       .to(
-        svgRef.current.querySelector("#cart-wheel2"),
+        svgRef.current.querySelector('#cart-wheel2'),
         {
           rotate: 360,
-          transformOrigin: "center",
+          transformOrigin: 'center',
           duration: 0.6,
-          ease: "none",
+          ease: 'none',
         },
-        "<"
+        '<'
       );
 
     return () => {

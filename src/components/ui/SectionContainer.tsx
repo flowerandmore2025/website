@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import * as motion from "motion/react-client"
+import { ReactNode } from 'react';
+import * as motion from 'motion/react-client';
 
 interface SectionContainerProps {
   children: ReactNode;
   title?: string;
   subtitle?: string;
   className?: string;
-  background?: "white" | "light" | "primary";
+  background?: 'white' | 'light' | 'primary';
   withPattern?: boolean;
 }
 
@@ -16,32 +16,25 @@ export default function SectionContainer({
   children,
   title,
   subtitle,
-  className = "",
-  background = "white",
+  className = '',
+  background = 'white',
   withPattern = false,
 }: SectionContainerProps) {
   const bgClasses = {
-    white: "bg-white",
-    light: "bg-gray-50",
-    primary: "bg-primary-50",
+    white: 'bg-white',
+    light: 'bg-gray-50',
+    primary: 'bg-primary-50',
   };
 
   return (
-    <section
-      className={`relative py-16 sm:py-24 ${bgClasses[background]} ${className}`}
-    >
+    <section className={`relative py-16 sm:py-24 ${bgClasses[background]} ${className}`}>
       {/* Optional background pattern */}
       {withPattern && (
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <pattern
-                  id="sectionPattern"
-                  width="40"
-                  height="40"
-                  patternUnits="userSpaceOnUse"
-                >
+                <pattern id="sectionPattern" width="40" height="40" patternUnits="userSpaceOnUse">
                   <path
                     d="M0 20 A 20 20 0 0 1 20 0 A 20 20 0 0 1 40 20 A 20 20 0 0 1 20 40 A 20 20 0 0 1 0 20 Z"
                     fill="none"
