@@ -92,7 +92,7 @@ export default function Contact() {
                 <div className="ml-4">
                   <p className="text-base font-medium">ที่ตั้ง</p>
                   <p className="mt-1">
-                    9/22 มบ.โกลเด้นวิล 2 ต.กะทู้ อ.กะทู้ จ.ภูเก็ต 83120
+                    9/22 หมู่บ้านโกลเด้นวิล 2 ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120
                   </p>
                 </div>
               </div>
