@@ -12,7 +12,7 @@ export default function Contact() {
       <PageHeader title="ติดต่อเรา" subtitle="ติดต่อเราเพื่อสร้างความสัมพันธ์กับเรา" />
 
       <SectionContainer background="white">
-          <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

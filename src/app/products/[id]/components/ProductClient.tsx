@@ -9,15 +9,9 @@ interface ProductClientProps {
   product: any;
   category: any;
   relatedProducts: any[];
-  productImages: string[];
 }
 
-export default function ProductClient({
-  product,
-  category,
-  relatedProducts,
-  productImages,
-}: ProductClientProps) {
+export default function ProductClient({ product, category, relatedProducts }: ProductClientProps) {
   const [activeImage, setActiveImage] = useState(0);
   const [copied, setCopied] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
@@ -129,9 +123,9 @@ export default function ProductClient({
           {/* Image gallery */}
           <div className="flex flex-col">
             <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg border border-gray-200">
-              {productImages && productImages.length > 0 ? (
+              {product.image ? (
                 <Image
-                  src={productImages[activeImage]}
+                  src={product.image}
                   alt={product.name}
                   className="h-full w-full object-cover object-center"
                   width={600}
@@ -148,9 +142,9 @@ export default function ProductClient({
             </div>
 
             {/* Thumbnail gallery */}
-            {productImages && productImages.length > 1 && (
+            {/* {product.images && product.images.length > 1 && (
               <div className="mt-4 grid grid-cols-4 gap-2">
-                {productImages.map((img, idx) => (
+                {product.images.map((img: string, idx: number) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImage(idx)}
@@ -170,7 +164,7 @@ export default function ProductClient({
                   </button>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Product info */}
@@ -345,9 +339,9 @@ export default function ProductClient({
               {relatedProducts.map(relatedProduct => (
                 <div key={relatedProduct.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 lg:h-60">
-                    {relatedProduct.images && relatedProduct.images.length > 0 ? (
+                    {relatedProduct.image ? (
                       <Image
-                        src={relatedProduct.images[0]}
+                        src={relatedProduct.image}
                         alt={relatedProduct.name}
                         className="h-full w-full object-cover object-center"
                         width={300}

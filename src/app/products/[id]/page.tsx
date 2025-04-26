@@ -1,24 +1,21 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import products from '@/data/products';
+import { getProductsAndCategories } from '@/scripts/googleSheetsService';
+import type { Product } from '@/types/product';
+import type { Category } from '@/types/category';
 import ProductClient from './components/ProductClient';
 import { baseUrl } from '@/constants';
 
-// Mock function to get related products
-const getRelatedProducts = (categoryId: string, currentId: string) => {
-  return products.products.filter(p => p.category === categoryId && p.id !== currentId).slice(0, 4);
-};
-
 // Generate static paths for all products
 export async function generateStaticParams() {
-  return products.products.map(product => ({
-    id: product.id,
-  }));
+  const { products } = await getProductsAndCategories();
+  return products.map((product: Product) => ({ id: product.id }));
 }
 
 // Generate metadata for the product page
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const product = products.products.find(p => p.id === params.id);
+  const { products, categories } = await getProductsAndCategories();
+  const product = products.find((p: Product) => p.id === params.id);
 
   if (!product) {
     return {
@@ -27,7 +24,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
-  const category = products.categories.find(c => c.id === product.category);
+  const category = categories.find((c: Category) => c.id === product.category);
   const categoryName = category ? `${category.name} | ${category.nameInThai}` : '';
 
   // Default image if product has no images
@@ -64,26 +61,14 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.products.find(p => p.id === params.id);
+export default async function ProductPage({ params }: { params: { id: string } }) {
+  const { products, categories } = await getProductsAndCategories();
+  const product = products.find((p: Product) => p.id === params.id);
+  if (!product) notFound();
+  const category = categories.find((c: Category) => c.id === product.category);
+  const relatedProducts = products
+    .filter((p: Product) => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
 
-  if (!product) {
-    notFound();
-  }
-
-  const category = products.categories.find(c => c.id === product.category);
-  const relatedProducts = getRelatedProducts(product.category, product.id as string);
-
-  // Default image if product has no images
-  const productImages =
-    product.images?.length > 0 ? product.images : ['/images/products/placeholder-1.jpg'];
-
-  return (
-    <ProductClient
-      product={product}
-      category={category}
-      relatedProducts={relatedProducts}
-      productImages={productImages}
-    />
-  );
+  return <ProductClient product={product} category={category} relatedProducts={relatedProducts} />;
 }

@@ -1,8 +1,7 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import products from '@/data/products';
+import { getProductsAndCategories } from '@/scripts/googleSheetsService';
+import type { Product } from '@/types/product';
 import * as motion from 'motion/react-client';
 import CartAnimation from '@/components/animations/CartAnimation';
 import TruckAnimation from '@/components/animations/TruckAnimation';
@@ -42,7 +41,10 @@ function Feature({
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const { products } = await getProductsAndCategories();
+  const popularProducts = products.filter((product: Product) => product.isPopular);
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Hero Section */}
@@ -119,20 +121,16 @@ export default function Home() {
       {/* Products Section */}
       <SectionContainer title="สินค้ายอดนิยม" background="light">
         <div className="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-          {products.products
-            .filter(product => product.isPopular)
-            .map((product, index) => (
-              <AnimatedCard
-                key={product.id}
-                title={product.name}
-                subtitle={`THB ${product.price}`}
-                imageSrc={
-                  product.images && product.images.length > 0 ? product.images[0] : undefined
-                }
-                href={`/products/${product.id}`}
-                index={index}
-              />
-            ))}
+          {popularProducts.map((product: Product, index: number) => (
+            <AnimatedCard
+              key={product.id}
+              title={product.name}
+              subtitle={`THB ${product.price}`}
+              imageSrc={product.image}
+              href={`/products/${product.id}`}
+              index={index}
+            />
+          ))}
         </div>
 
         <div className="mt-12 text-center">

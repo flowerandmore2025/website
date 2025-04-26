@@ -1,7 +1,8 @@
 import ProductSearchPage from '@/app/feature/product/components/ProductSearchPage';
-import { Suspense } from 'react';
+import { getProductsAndCategories } from '@/scripts/googleSheetsService';
 import { Metadata } from 'next';
 import { baseUrl } from '@/constants';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: `ค้นหาดอกไม้สด ดอกไม้ประดิษฐ์ ดอกไม้ไทย พานพุ่ม ราคาถูก | ส่งเร็วทั่วไทย | Phuket Flower Shop`,
@@ -18,10 +19,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const { products, categories } = await getProductsAndCategories();
+
   return (
-    <Suspense>
-      <ProductSearchPage />
+    <Suspense fallback={<SearchBarFallback />}>
+      <ProductSearchPage products={products} categories={categories} />
     </Suspense>
   );
 }
+
+const SearchBarFallback = () => {
+  return <div>Loading...</div>;
+};

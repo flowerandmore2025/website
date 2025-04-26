@@ -6,9 +6,10 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import ImageHoverEffect from '@/components/animations/ImageHoverEffect';
 import ProductHoverFlowers from '@/components/animations/ProductHoverFlowers';
+import { Product } from '@/types/product';
 
 interface EnhancedProductCardProps {
-  product: any;
+  product: Product;
   index: number;
 }
 
@@ -99,9 +100,9 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
 
         {/* Image */}
         <div className="h-[400px] overflow-hidden">
-          {product.images && product.images.length > 0 ? (
+          {product.image ? (
             <ImageHoverEffect
-              src={product.images[0]}
+              src={product.image}
               alt={product.name}
               width={600}
               height={400}

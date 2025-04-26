@@ -1,32 +1,46 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import * as motion from 'motion/react-client';
 import { MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
-import products from '@/data/products';
+import type { Product } from '@/types/product';
+import type { Category } from '@/types/category';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionContainer from '@/components/ui/SectionContainer';
 import CtaSection from '@/components/ui/CtaSection';
 import ProductCard from '@/components/ui/ProductCard';
+import debounce from 'lodash/debounce';
 
-export default function ProductSearchPage() {
+interface ProductSearchPageProps {
+  products: Product[];
+  categories: Category[];
+}
+
+export default function ProductSearchPage({ products, categories }: ProductSearchPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   // Get category from URL or default to "all"
   const categoryParam = searchParams.get('category');
-  const initialCategory =
-    categoryParam && products.categories.some(c => c.id === categoryParam) ? categoryParam : 'all';
+  const initialCategory = useMemo(() => {
+    return categoryParam && categories?.some((c: Category) => c.id === categoryParam)
+      ? categoryParam
+      : 'all';
+  }, [categoryParam, categories]);
 
   // Get price range from URL or default values
   const minPriceParam = searchParams.get('minPrice');
   const maxPriceParam = searchParams.get('maxPrice');
   const initialMinPrice =
     minPriceParam && !isNaN(Number(minPriceParam)) ? Number(minPriceParam) : 100;
-  const initialMaxPrice =
-    maxPriceParam && !isNaN(Number(maxPriceParam)) ? Number(maxPriceParam) : products.maxPrice;
-
+  const initialMaxPrice = useMemo(() => {
+    return maxPriceParam && !isNaN(Number(maxPriceParam))
+      ? Number(maxPriceParam)
+      : products && products.length > 0
+        ? Math.max(...products.map((p: Product) => p.price))
+        : 10000;
+  }, [products]);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [priceRange, setPriceRange] = useState<[number, number]>([
     initialMinPrice,
@@ -35,9 +49,10 @@ export default function ProductSearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [debouncedFilteredProducts, setDebouncedFilteredProducts] = useState<Product[]>(products);
 
   // Function to update URL with current filters
-  const updateURL = () => {
+  const updateURL = useCallback(() => {
     if (!isClient) return;
 
     const params = new URLSearchParams();
@@ -52,7 +67,11 @@ export default function ProductSearchPage() {
       params.set('minPrice', priceRange[0].toString());
     }
 
-    if (priceRange[1] !== products.maxPrice) {
+    if (
+      products &&
+      priceRange[1] !==
+        (products.length > 0 ? Math.max(...products.map((p: Product) => p.price)) : 10000)
+    ) {
       params.set('maxPrice', priceRange[1].toString());
     }
 
@@ -62,32 +81,55 @@ export default function ProductSearchPage() {
 
     // Use replace instead of push and set scroll to false to prevent scrolling to top
     router.replace(url, { scroll: false });
-  };
+  }, [isClient, router, selectedCategory, priceRange[0], priceRange[1], products]);
+
+  const debouncedUpdateURL = useMemo(() => debounce(updateURL, 300), [updateURL]);
 
   // Avoid hydration mismatch and sync URL with filters
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Update URL when filters change
+  // Update URL when filters change (category, but NOT price)
   useEffect(() => {
     if (isClient) {
       updateURL();
     }
-  }, [isClient, selectedCategory, priceRange[0], priceRange[1]]);
+  }, [isClient, selectedCategory]);
 
-  const filteredProducts = products.products.filter(product => {
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-    const matchesSearch =
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+  // Debounced update for priceRange
+  useEffect(() => {
+    if (isClient) {
+      debouncedUpdateURL();
+    }
+    // Cleanup debounce on unmount
+    return () => {
+      debouncedUpdateURL.cancel();
+    };
+  }, [isClient, priceRange[0], priceRange[1], debouncedUpdateURL]);
 
-    return matchesCategory && matchesPrice && matchesSearch;
-  });
+  useEffect(() => {
+    const handler = debounce(() => {
+      setDebouncedFilteredProducts(
+        products.filter((product: Product) => {
+          const matchesCategory =
+            selectedCategory === 'all' || product.categoryId === selectedCategory;
+          const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+          const matchesSearch =
+            product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            product.description.toLowerCase().includes(searchQuery.toLowerCase());
+          return matchesCategory && matchesPrice && matchesSearch;
+        })
+      );
+    }, 300);
+    handler();
+    return () => handler.cancel();
+  }, [products, selectedCategory, priceRange[0], priceRange[1], searchQuery]);
+
+  if (!products || !categories) return null;
 
   // Get the highest price for range input max
-  const maxPrice = Math.max(...products.products.map(p => p.price));
+  const maxPrice = products.length > 0 ? Math.max(...products.map((p: Product) => p.price)) : 10000;
 
   if (!isClient) {
     return null; // Avoid hydration issues by not rendering until client-side
@@ -182,7 +224,7 @@ export default function ProductSearchPage() {
                       ทั้งหมด
                     </label>
                   </div>
-                  {products.categories.map(category => (
+                  {categories.map((category: Category) => (
                     <div key={category.id} className="flex items-center">
                       <input
                         id={`category-${category.id}`}
@@ -279,7 +321,7 @@ export default function ProductSearchPage() {
                 <div className="flex items-center">
                   <h2 className="text-lg font-medium text-gray-900">พบ</h2>
                   <span className="ml-2 inline-flex items-center justify-center rounded-full bg-primary-600 px-3 py-1 text-sm font-medium text-white shadow-sm">
-                    {filteredProducts.length}
+                    {debouncedFilteredProducts.length}
                   </span>
                   <h2 className="ml-2 text-lg font-medium text-gray-900">สินค้า</h2>
                 </div>
@@ -294,7 +336,7 @@ export default function ProductSearchPage() {
                   {selectedCategory !== 'all' && (
                     <div className="inline-flex items-center rounded-full bg-primary-200 px-3 py-1.5 text-sm font-medium text-primary-800 shadow-sm">
                       <span>
-                        {products.categories.find(c => c.id === selectedCategory)?.nameInThai}
+                        {categories.find((c: Category) => c.id === selectedCategory)?.nameInThai}
                       </span>
                       <button
                         onClick={() => setSelectedCategory('all')}
@@ -389,9 +431,9 @@ export default function ProductSearchPage() {
               )}
             </div>
 
-            {filteredProducts.length > 0 ? (
+            {debouncedFilteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredProducts.map((product, index) => (
+                {debouncedFilteredProducts.map((product: Product, index: number) => (
                   <ProductCard key={product.id} product={product} index={index} />
                 ))}
               </div>
