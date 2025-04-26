@@ -189,22 +189,22 @@ export default function ProductClient({
               </p>
             </div>
 
-            <div className="mt-6 border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-medium text-gray-900">
-                คำอธิบายสินค้า
-              </h3>
-              <div className="mt-2 space-y-6 text-base text-gray-700">
-                {product.description}
-              </div>
-            </div>
+            {/*<div className="mt-6 border-t border-gray-200 pt-6">*/}
+            {/*  <h3 className="text-lg font-medium text-gray-900">*/}
+            {/*    คำอธิบายสินค้า*/}
+            {/*  </h3>*/}
+            {/*  <div className="mt-2 space-y-6 text-base text-gray-700">*/}
+            {/*    {product.description}*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
             <div className="mt-6 border-t border-gray-200 pt-6">
-              <div className="flex items-center">
-                <h2 className="text-sm font-medium text-gray-900">สร้างโดย</h2>
-                <p className="ml-2 text-sm text-gray-600 font-medium">
-                  {product.craftedBy}
-                </p>
-              </div>
+              {/*<div className="flex items-center">*/}
+              {/*  <h2 className="text-sm font-medium text-gray-900">สร้างโดย</h2>*/}
+              {/*  <p className="ml-2 text-sm text-gray-600 font-medium">*/}
+              {/*    {product.craftedBy}*/}
+              {/*  </p>*/}
+              {/*</div>*/}
               <div className="mt-2 flex items-center">
                 <h2 className="text-sm font-medium text-gray-900">
                   สินค้าในคลัง
@@ -305,7 +305,7 @@ export default function ProductClient({
               <div className="flex items-center">
                 <ArrowPathIcon className="h-5 w-5 text-green-500 mr-2"/>
                 <p className="text-sm text-gray-600">
-                  นักสั่งซื้อสามารถยกเลิกคำสั่งซื้อได้ภายใน 1 ชั่วโมง
+                  สามารถยกเลิกคำสั่งซื้อได้ภายใน 1 ชั่วโมง
                 </p>
               </div>
               <div className="flex items-center">
@@ -324,7 +324,7 @@ export default function ProductClient({
                   />
                 </svg>
                 <p className="text-sm text-gray-600">
-                  ส่งฟรีทุกวันในเขตภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท
+                  ส่งฟรีทุกวันในเขตเมืองภูเก็ตเมื่อสั่งซื้อครบ 1,000 บาท
                 </p>
               </div>
             </div>
