@@ -191,14 +191,13 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
               </p>
             </div>
 
-            {/*<div className="mt-6 border-t border-gray-200 pt-6">*/}
-            {/*  <h3 className="text-lg font-medium text-gray-900">*/}
-            {/*    คำอธิบายสินค้า*/}
-            {/*  </h3>*/}
-            {/*  <div className="mt-2 space-y-6 text-base text-gray-700">*/}
-            {/*    {product.description}*/}
-            {/*  </div>*/}
-            {/*</div>*/}
+            {/* Description */}
+            {product.description && (
+              <div className="mt-6 border-t border-gray-200 pt-6">
+                <h3 className="text-lg font-medium text-gray-900">คำอธิบายสินค้า</h3>
+                <div className="mt-2 space-y-6 text-base text-gray-700">{product.description}</div>
+              </div>
+            )}
 
             <div className="mt-6 border-t border-gray-200 pt-6">
               {/*<div className="flex items-center">*/}

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProductsAndCategories } from '@/scripts/googleSheetsService';
+import { getProductsAndCategories } from '@/service/googleSheetsService';
 import type { Product } from '@/types/product';
 import type { Category } from '@/types/category';
 import ProductClient from './components/ProductClient';
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for the product page
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const { products, categories } = await getProductsAndCategories();
+  const { products } = await getProductsAndCategories();
   const product = products.find((p: Product) => p.id === params.id);
 
   if (!product) {
@@ -24,12 +24,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
-  const category = categories.find((c: Category) => c.id === product.category);
-  const categoryName = category ? `${category.name} | ${category.nameInThai}` : '';
-
   // Default image if product has no images
-  const productImage =
-    product.images?.length > 0 ? product.images[0] : '/images/products/placeholder-1.jpg';
+  const productImage = product.image || '/images/products/placeholder-1.jpg';
 
   // Construct absolute URL for the image
   const imageUrl = new URL(productImage, baseUrl).toString();
@@ -65,9 +61,9 @@ export default async function ProductPage({ params }: { params: { id: string } }
   const { products, categories } = await getProductsAndCategories();
   const product = products.find((p: Product) => p.id === params.id);
   if (!product) notFound();
-  const category = categories.find((c: Category) => c.id === product.category);
+  const category = categories.find((c: Category) => c.id === product.categoryId);
   const relatedProducts = products
-    .filter((p: Product) => p.category === product.category && p.id !== product.id)
+    .filter((p: Product) => p.categoryId === product.categoryId && p.id !== product.id)
     .slice(0, 4);
 
   return <ProductClient product={product} category={category} relatedProducts={relatedProducts} />;

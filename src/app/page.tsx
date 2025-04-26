@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProductsAndCategories } from '@/scripts/googleSheetsService';
+import { getProductsAndCategories } from '@/service/googleSheetsService';
 import type { Product } from '@/types/product';
 import * as motion from 'motion/react-client';
 import CartAnimation from '@/components/animations/CartAnimation';

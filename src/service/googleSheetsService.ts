@@ -1,6 +1,5 @@
-import { Category } from '@/types/category';
-import { Product } from '@/types/product';
 import { google } from 'googleapis';
+import memoize from 'lodash/memoize';
 
 const sheets = google.sheets('v4');
 
@@ -11,10 +10,6 @@ const auth = new google.auth.GoogleAuth({
   },
   scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
 });
-
-// Memoization caches
-let productsCache: Product[] | null = null;
-let categoriesCache: Category[] | null = null;
 
 export async function getSheetData({
   spreadsheetId = process.env.GOOGLE_SHEET_ID!,
@@ -40,8 +35,7 @@ export async function getProductsAndCategories() {
   return { products, categories };
 }
 
-export async function getProducts() {
-  if (productsCache) return productsCache;
+export const getProducts = memoize(async () => {
   const values = await getSheetData({ range: 'products!A1:J81' });
   if (!values || values.length < 2) return [];
   const [header, ...rows] = values;
@@ -52,24 +46,19 @@ export async function getProducts() {
       id: obj.id,
       name: obj.name,
       price: Number(obj.price),
-      images: obj.images ? obj.images.split(',') : [],
-      category: obj.category,
       categoryId: obj.categoryId,
       craftedBy: obj.craftedBy,
       description: obj.description,
-      inStock: obj.inStock === 'TRUE' || obj.inStock === true,
-      isPopular: obj.isPopular === 'TRUE' || obj.isPopular === true,
+      inStock: obj.inStock === 'TRUE',
+      isPopular: obj.isPopular === 'TRUE',
       image: obj.image,
     };
   });
 
-  productsCache = products;
   return products;
-}
+});
 
-export async function getCategories() {
-  if (categoriesCache) return categoriesCache;
-
+export const getCategories = memoize(async () => {
   const values = await getSheetData({ range: 'categories!A1:C6' });
   if (!values || values.length < 2) return [];
   const [header, ...rows] = values;
@@ -78,6 +67,5 @@ export async function getCategories() {
     return { id: obj.id, name: obj.name, nameInThai: obj.nameInThai };
   });
 
-  categoriesCache = categories;
   return categories;
-}
+});
