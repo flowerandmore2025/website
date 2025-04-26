@@ -24,7 +24,7 @@ const vaseBouquetCategoryId: string = 'vase_bouquet';
 
 const bouquets: Omit<Product, 'category'>[] = [
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 560,
     images: ['/images/products/bouquets/fresh_flower/1.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -32,7 +32,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 2500,
     images: ['/images/products/bouquets/fresh_flower/2.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -40,7 +40,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 1000,
     images: ['/images/products/bouquets/fresh_flower/3.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -48,7 +48,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 1500,
     images: ['/images/products/bouquets/fresh_flower/4.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -56,7 +56,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: true,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 150,
     images: ['/images/products/bouquets/fresh_flower/5.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -64,7 +64,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: true,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 250,
     images: ['/images/products/bouquets/fresh_flower/6.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -72,7 +72,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: true,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 2500,
     images: ['/images/products/bouquets/fresh_flower/8.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -80,7 +80,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 150,
     images: ['/images/products/bouquets/fresh_flower/12.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -88,7 +88,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 150,
     images: ['/images/products/bouquets/fresh_flower/13.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -96,7 +96,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 1500,
     images: ['/images/products/bouquets/fresh_flower/11.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -104,7 +104,7 @@ const bouquets: Omit<Product, 'category'>[] = [
     isPopular: false,
   },
   {
-    name: 'ช่อดูเก้ดอกไม้สด',
+    name: 'ช่อบูเก้ดอกไม้สด',
     price: 1500,
     images: ['/images/products/bouquets/fresh_flower/14.jpg'],
     description: 'Beautiful fresh flower bouquet with a perfect blend of colors',
@@ -577,14 +577,6 @@ const vaseBouquet: Omit<Product, 'category'>[] = [
     price: 1500,
     images: ['/images/products/vase_bouquet/22.jpg'],
     description: 'การจัดดอกทิวลิปสีเหลืองและดอกไอริสสีฟ้าอย่างสดใสในแจกันเซรามิกวาดมือ',
-    inStock: true,
-    isPopular: false,
-  },
-  {
-    name: 'ช่อแจกัน',
-    price: 1500,
-    images: ['/images/products/vase_bouquet/23.jpg'],
-    description: 'การจัดดอกลาเวนเดอร์และโรสแมรี่หอมในกระถางเทอราคอตตา นำกลิ่นหอมของสวนโพรวองซ์',
     inStock: true,
     isPopular: false,
   },
