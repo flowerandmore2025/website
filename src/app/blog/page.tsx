@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import blog from '@/data/blog';
 import { baseUrl } from '@/constants';
+import Image from 'next/image';
 
 // Generate metadata for the blog page
 export const metadata: Metadata = {
@@ -123,18 +124,24 @@ export default function BlogPage() {
               >
                 <div className="relative w-full">
                   <Link href={`/blog/${post.slug}`} className="block">
-                    <div className="aspect-[16/9] w-full rounded-2xl bg-primary-50 sm:aspect-[2/1] lg:aspect-[3/2] overflow-hidden group-hover:bg-primary-100 transition-colors duration-300">
-                      <div className="h-full w-full flex items-center justify-center">
-                        <span className="text-4xl font-display text-primary-600 group-hover:scale-110 transition-transform duration-300">
-                          {post.title.includes('🌷') ? '🌷' : post.title.charAt(0)}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                    {post.image ? (
+                      <Image className="rounded-2xl" src={post.image} alt={post.title} width={600} height={300} />
+                    ) : (
+                      <>
+                        <div className="aspect-[16/9] w-full rounded-2xl bg-primary-50 sm:aspect-[2/1] lg:aspect-[3/2] overflow-hidden group-hover:bg-primary-100 transition-colors duration-300">
+                          <div className="h-full w-full flex items-center justify-center">
+                            <span className="text-4xl font-display text-primary-600 group-hover:scale-110 transition-transform duration-300">
+                              {post.title.includes('🌷') ? '🌷' : post.title.charAt(0)}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                      </>
+                    )}
                   </Link>
                 </div>
                 <div className="max-w-xl">
-                  <div className="mt-8 flex items-center gap-x-4 text-xs">
+                  <div className="mt-4 flex items-center gap-x-4 text-xs">
                     <time dateTime={post.date} className="text-gray-500">
                       {new Date(post.date).toLocaleDateString('th-TH', {
                         year: 'numeric',
