@@ -85,12 +85,13 @@ export default function Contact() {
               <div className="mt-4 flex space-x-4">
                 {[
                   { name: 'Facebook', href: '#' },
-                  { name: 'Instagram', href: '#' },
+                  { name: 'Instagram', href: 'https://www.instagram.com/flowerandmore.official/' },
                   { name: 'Line', href: '#' },
                 ].map(item => (
                   <a
                     key={item.name}
                     href={item.href}
+                    target="_blank"
                     className="text-primary-200 hover:text-white transition-colors duration-200"
                   >
                     {item.name}

@@ -5,13 +5,13 @@ import { baseUrl } from '@/constants';
 
 // Generate metadata for the blog page
 export const metadata: Metadata = {
-  title: 'Blog | Phuket Flower Shop',
-  description: 'Read our latest articles about flowers, arrangements, and more.',
+  title: 'บทความ | Flower & More Phuket',
+  description: 'ค้นหาบทความล่าสุดของเราเกี่ยวกับดอกไม้',
   openGraph: {
-    title: 'Blog | Phuket Flower Shop',
-    description: 'Read our latest articles about flowers, arrangements, and more.',
+    title: 'บทความ | Flower & More Phuket',
+    description: 'ค้นหาบทความล่าสุดของเราเกี่ยวกับดอกไม้',
     url: new URL('/blog', baseUrl).toString(),
-    siteName: 'Phuket Flower Shop',
+    siteName: 'Flower & More Phuket',
     locale: 'th_TH',
     type: 'website',
   },
