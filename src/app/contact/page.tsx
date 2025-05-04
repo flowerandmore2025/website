@@ -4,7 +4,6 @@ import * as motion from 'motion/react-client';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionContainer from '@/components/ui/SectionContainer';
-import AbstractFlowerBg from '@/components/animations/AbstractFlowerBg';
 
 export default function Contact() {
   return (
@@ -20,10 +19,6 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="relative overflow-hidden rounded-2xl bg-primary-700 p-8 text-white max-w-3xl mx-auto w-full"
           >
-            <div className="absolute inset-0 opacity-10">
-              <AbstractFlowerBg />
-            </div>
-
             <h3 className="text-2xl font-bold">ข้อมูลการติดต่อ</h3>
             <p className="mt-2 text-primary-200">เราพร้อมให้บริการและตอบคำถามตลอด 24 ชั่วโมง</p>
 
@@ -111,7 +106,7 @@ export default function Contact() {
       <SectionContainer background="light" title="ที่ตั้งของเรา">
         <div className="h-96 w-full bg-gray-200 rounded-lg overflow-hidden shadow-inner">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252232.25309900828!2d98.29150521953126!3d7.978534999999989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305031e2c462524f%3A0xcda0482bcad13394!2zUGh1a2V0IEZsb3dlciBTaG9wIOC4nuC4seC4meC4nuC4seC4meC4mOC5jCDguKfguLHguJTguJTguK3guIHguYTguKHguYnguJvguKXguLXguIHguYDguIU!5e0!3m2!1sen!2sth!4v1652345678901!5m2!1sen!2sth"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15807.198488612481!2d98.32176427851664!3d7.915988573718394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050305e50e4eba9%3A0xa653119afd2b0d03!2sPhuket%20Golden%20Ville%205!5e0!3m2!1sen!2sth!4v1746350063631!5m2!1sen!2sth"
             width="100%"
             height="100%"
             style={{ border: 0 }}

@@ -125,7 +125,7 @@ export default async function Home() {
             <AnimatedCard
               key={product.id}
               title={product.name}
-              subtitle={`THB ${product.price}`}
+              subtitle={`THB ${Number(product.price).toLocaleString()}`}
               imageSrc={product.image}
               href={`/products/${product.id}`}
               index={index}
