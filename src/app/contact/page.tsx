@@ -84,7 +84,7 @@ export default function Contact() {
               <h4 className="text-lg font-medium">ติดตามเรา</h4>
               <div className="mt-4 flex space-x-4">
                 {[
-                  { name: 'Facebook', href: '#' },
+                  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576166213676' },
                   { name: 'Instagram', href: 'https://www.instagram.com/flowerandmore.official/' },
                   { name: 'Line', href: '#' },
                 ].map(item => (
