@@ -75,7 +75,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Flower & More, Inc. All rights reserved.
         </p>
         <p className="mt-2 text-center text-xs leading-5 text-gray-500">
-          โทร. 0612394924, 0897248956
+          โทร. 0612394924, 0897248056
         </p>
       </div>
     </footer>

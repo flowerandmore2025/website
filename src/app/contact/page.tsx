@@ -30,7 +30,7 @@ export default function Contact() {
                 <div className="ml-4 w-full">
                   <p className="text-base font-medium">เบอร์โทร</p>
                   <div className="mt-1 space-y-1">
-                    {['0612394924', '0897248956'].map((phone, index) => (
+                    {['0612394924', '0897248056'].map((phone, index) => (
                       <div key={index} className="flex items-center">
                         <a
                           href={`tel:${phone}`}

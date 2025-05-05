@@ -24,12 +24,12 @@ export default function Header() {
           </div>
         </a>
         <a
-          href="tel:0897248956"
+          href="tel:0897248056"
           className="text-sm leading-6 text-primary-800 font-light hover:text-primary-600 transition-colors duration-200 cursor-pointer flex items-center gap-1"
         >
           <div className="flex items-center gap-1">
             <PhoneIcon className="h-4 w-4" />
-            <span>โทร: 0897248956</span>
+            <span>โทร: 0897248056</span>
           </div>
         </a>
       </div>
@@ -139,11 +139,11 @@ export default function Header() {
                   <span>โทร: 0612394924</span>
                 </a>
                 <a
-                  href="tel:0897248956"
+                  href="tel:0897248056"
                   className="-mx-3 rounded-lg px-3 py-2.5 text-sm font-light text-primary-800 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 flex items-center gap-2"
                 >
                   <PhoneIcon className="h-4 w-4" />
-                  <span>โทร: 0897248956</span>
+                  <span>โทร: 0897248056</span>
                 </a>
               </div>
             </div>
