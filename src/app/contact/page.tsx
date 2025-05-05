@@ -86,7 +86,7 @@ export default function Contact() {
                 {[
                   { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576166213676' },
                   { name: 'Instagram', href: 'https://www.instagram.com/flowerandmore.official/' },
-                  { name: 'Line', href: '#' },
+                  { name: 'Line', href: 'https://line.me/ti/p/@623jsfdu' },
                 ].map(item => (
                   <a
                     key={item.name}

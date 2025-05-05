@@ -32,7 +32,7 @@ const navigation = {
     },
     {
       name: 'Line',
-      href: '#',
+      href: 'https://line.me/ti/p/@623jsfdu',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
