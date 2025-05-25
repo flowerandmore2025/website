@@ -479,7 +479,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
       <CtaSection
         title="ไม่เจอสิ่งที่คุณต้องการใช่ไหม?"
         subtitle="ติดต่อเราสำหรับการจัดดอกไม้ที่กำหนดเองตามความต้องการของคุณ"
-        primaryButtonText="Contact Us"
+        primaryButtonText="ติดต่อเรา"
         primaryButtonLink="/contact"
         withFlower={true}
       />

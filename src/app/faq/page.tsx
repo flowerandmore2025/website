@@ -3,7 +3,7 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import * as motion from 'motion/react-client';
-import faqs from '@/data/faqs';
+import faqsData from '@/data/faqs';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionContainer from '@/components/ui/SectionContainer';
 import CtaSection from '@/components/ui/CtaSection';
@@ -45,14 +45,14 @@ export default function FAQPage() {
             initial="hidden"
             animate="show"
           >
-            {faqs.faqs.map((faq, index) => (
+            {faqsData.faqs.map((faq: any, index: number) => (
               <motion.div
                 key={faq.question}
                 variants={itemVariants}
                 className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <Disclosure>
-                  {({ open }) => (
+                  {({ open }: { open: boolean }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-start justify-between bg-white px-6 py-5 text-left text-gray-900">
                         <div className="flex items-center">
