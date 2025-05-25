@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as motion from 'motion/react-client';
-import Link from 'next/link';
 import { gsap } from 'gsap';
 import ImageHoverEffect from '@/components/animations/ImageHoverEffect';
 import ProductHoverFlowers from '@/components/animations/ProductHoverFlowers';
+import TransitionLink from '@/components/ui/TransitionLink';
 import { Product } from '@/types/product';
 
 interface EnhancedProductCardProps {
@@ -75,7 +75,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
 
   return (
     <div className="block h-full">
-      <Link href={`/products/${product.id}`}>
+      <TransitionLink href={`/products/${product.id}`}>
         <motion.div
           ref={cardRef}
           className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full"
@@ -157,7 +157,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
             isDesktop={isDesktop}
           />
         </motion.div>
-      </Link>
+      </TransitionLink>
     </div>
   );
 }

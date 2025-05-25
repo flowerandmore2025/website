@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { getProductsAndCategories } from '@/service/googleSheetsService';
 import type { Product } from '@/types/product';
 import * as motion from 'motion/react-client';
@@ -9,6 +8,7 @@ import PhoneAnimation from '@/components/animations/PhoneAnimation';
 import SectionContainer from '@/components/ui/SectionContainer';
 import AnimatedCard from '@/components/ui/AnimatedCard';
 import CtaSection from '@/components/ui/CtaSection';
+import TransitionLink from '@/components/ui/TransitionLink';
 import { ArrowRightIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline';
 
 function Feature({
@@ -66,13 +66,13 @@ export default async function Home() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <Link
+                <TransitionLink
                   href="/products"
                   className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 flex items-center justify-start"
                 >
                   เลือกซื้อสินค้า
                   <ArrowRightIcon className="ml-2 h-4 w-4" />
-                </Link>
+                </TransitionLink>
               </motion.div>
             </div>
           </motion.div>
@@ -139,13 +139,13 @@ export default async function Home() {
             whileTap={{ scale: 0.98 }}
             className="inline-block"
           >
-            <Link
+            <TransitionLink
               href="/products"
               className="rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors duration-300 inline-flex items-center"
             >
               ดูสินค้าทั้งหมด
               <ArrowLongRightIcon className="ml-2 h-5 w-5" />
-            </Link>
+            </TransitionLink>
           </motion.div>
         </div>
       </SectionContainer>

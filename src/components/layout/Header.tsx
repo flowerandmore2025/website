@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import TransitionLink from '@/components/ui/TransitionLink';
 import { Bars3Icon, XMarkIcon, PhoneIcon } from '@heroicons/react/24/outline';
 import { navigation, phoneNumber } from '@/constants';
 import * as motion from 'motion/react-client';
@@ -37,7 +37,7 @@ export default function Header() {
       {/* Main header with logo */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-row sm:flex-col justify-between sm:justify-center items-center pt-4 sm:pt-8 pb-4">
         {/* Logo */}
-        <Link href="/" className="sm:mb-6">
+        <TransitionLink href="/" className="sm:mb-6">
           <span className="sr-only">Flower & More</span>
           <Image
             src="/images/logo.png"
@@ -47,7 +47,7 @@ export default function Header() {
             className="h-auto w-auto max-w-[180px] sm:max-w-[250px]"
             priority
           />
-        </Link>
+        </TransitionLink>
 
         {/* Mobile menu button - only visible on small screens */}
         <div className="lg:hidden">
@@ -67,13 +67,13 @@ export default function Header() {
         {/* Desktop navigation */}
         <div className="hidden lg:flex justify-center gap-x-16 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {navigation.map(item => (
-            <Link
+            <TransitionLink
               key={item.name}
               href={item.href}
               className="text-lg uppercase tracking-wider font-medium text-primary-800 hover:text-primary-600 transition-colors duration-200"
             >
               {item.name}
-            </Link>
+            </TransitionLink>
           ))}
         </div>
       </nav>
@@ -97,7 +97,11 @@ export default function Header() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+            <TransitionLink
+              href="/"
+              className="-m-1.5 p-1.5"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <span className="sr-only">Flower & More</span>
               <Image
                 src="/images/logo.png"
@@ -106,7 +110,7 @@ export default function Header() {
                 height={150}
                 className="h-8 sm:h-10 w-auto"
               />
-            </Link>
+            </TransitionLink>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-primary-800"
@@ -120,14 +124,14 @@ export default function Header() {
             <div className="-my-4 sm:-my-6 divide-y divide-primary-200">
               <div className="space-y-2 sm:space-y-3 py-4 sm:py-6">
                 {navigation.map(item => (
-                  <Link
+                  <TransitionLink
                     key={item.name}
                     href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base tracking-wide text-primary-800 hover:bg-primary-50 transition-colors duration-200"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </Link>
+                  </TransitionLink>
                 ))}
               </div>
               <div className="py-4 sm:py-6 flex justify-around">

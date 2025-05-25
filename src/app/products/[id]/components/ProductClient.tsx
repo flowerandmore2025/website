@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowPathIcon, ShareIcon } from '@heroicons/react/24/outline';
+import TransitionLink from '@/components/ui/TransitionLink';
 
 interface ProductClientProps {
   product: any;
@@ -62,7 +62,7 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
           {/* Mobile breadcrumbs - simplified version */}
           <div className="md:hidden">
             <div className="flex items-center mb-2">
-              <Link href="/products" className="text-primary-600 hover:text-primary-700">
+              <TransitionLink href="/products" className="text-primary-600 hover:text-primary-700">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 mr-1 inline"
@@ -78,17 +78,17 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
                   />
                 </svg>
                 กลับไปหน้าสินค้า
-              </Link>
+              </TransitionLink>
             </div>
             <div className="flex flex-wrap items-center">
               <span className="text-xs text-gray-400 mr-1">หมวดหมู่:</span>
               {category && (
-                <Link
+                <TransitionLink
                   href={`/products?category=${category.id}`}
                   className="text-primary-600 hover:text-primary-700 text-xs"
                 >
                   {category.nameInThai}
-                </Link>
+                </TransitionLink>
               )}
             </div>
           </div>
@@ -96,22 +96,25 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
           {/* Desktop breadcrumbs - full version */}
           <ol className="hidden md:flex items-center flex-wrap">
             <li className="flex items-center">
-              <Link href="/" className="hover:text-primary-600">
+              <TransitionLink href="/" className="hover:text-primary-600">
                 หน้าหลัก
-              </Link>
+              </TransitionLink>
               <span className="mx-2 text-gray-400">/</span>
             </li>
             <li className="flex items-center">
-              <Link href="/products" className="hover:text-primary-600">
+              <TransitionLink href="/products" className="hover:text-primary-600">
                 สินค้า
-              </Link>
+              </TransitionLink>
               <span className="mx-2 text-gray-400">/</span>
             </li>
             {category && (
               <li className="flex items-center">
-                <Link href={`/products?category=${category.id}`} className="hover:text-primary-600">
+                <TransitionLink
+                  href={`/products?category=${category.id}`}
+                  className="hover:text-primary-600"
+                >
                   {category.nameInThai}
-                </Link>
+                </TransitionLink>
                 <span className="mx-2 text-gray-400">/</span>
               </li>
             )}
@@ -170,12 +173,12 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
           {/* Product info */}
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             {category && (
-              <Link
+              <TransitionLink
                 href={`/products?category=${category.id}`}
                 className="text-sm font-medium text-primary-600 hover:text-primary-700"
               >
                 {category.name} / {category.nameInThai}
-              </Link>
+              </TransitionLink>
             )}
 
             <h1 className="mt-2 text-3xl font-display font-bold tracking-tight text-gray-900">
@@ -357,10 +360,10 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-900">
-                        <Link href={`/products/${relatedProduct.id}`}>
+                        <TransitionLink href={`/products/${relatedProduct.id}`}>
                           <span aria-hidden="true" className="absolute inset-0" />
                           {relatedProduct.name}
-                        </Link>
+                        </TransitionLink>
                       </h3>
                     </div>
                     <p className="text-sm font-medium text-gray-900">

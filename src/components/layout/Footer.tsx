@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 import { navigation as navigationConstants } from '@/constants';
 
 const navigation = {
@@ -35,9 +36,7 @@ const navigation = {
       href: 'https://line.me/ti/p/@623jsfdu',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            d="M21.727 10.908c0-4.247-4.256-7.702-9.485-7.702-5.228 0-9.485 3.455-9.485 7.702 0 3.809 3.379 7.003 7.938 7.604.309.066.73.204.837.468.096.242.063.622.031.867 0 0-.112.675-.137.819-.42.242-.193.947.834.516 1.029-.43 5.555-3.272 7.578-5.603h.002c1.4-1.53 2.071-3.083 2.071-4.671zm-13.068 2.284H6.826c-.242 0-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.11h1.393c.243 0 .44.198.44.44s-.197.44-.44.44zm1.744-.44c0 .242-.198.44-.44.44s-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.552zm4.537.44h-1.834c-.242 0-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.11h1.394c.243 0 .44.198.44.44s-.197.44-.44.44zm2.625-.44c0 .242-.198.44-.44.44s-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.552z"
-          />
+          <path d="M21.727 10.908c0-4.247-4.256-7.702-9.485-7.702-5.228 0-9.485 3.455-9.485 7.702 0 3.809 3.379 7.003 7.938 7.604.309.066.73.204.837.468.096.242.063.622.031.867 0 0-.112.675-.137.819-.42.242-.193.947.834.516 1.029-.43 5.555-3.272 7.578-5.603h.002c1.4-1.53 2.071-3.083 2.071-4.671zm-13.068 2.284H6.826c-.242 0-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.11h1.393c.243 0 .44.198.44.44s-.197.44-.44.44zm1.744-.44c0 .242-.198.44-.44.44s-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.552zm4.537.44h-1.834c-.242 0-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.11h1.394c.243 0 .44.198.44.44s-.197.44-.44.44zm2.625-.44c0 .242-.198.44-.44.44s-.44-.198-.44-.44V9.2c0-.243.198-.44.44-.44s.44.197.44.44v3.552z" />
         </svg>
       ),
     },
@@ -54,18 +53,23 @@ export default function Footer() {
         >
           {navigation.main.map(item => (
             <div key={item.name} className="pb-6">
-              <Link
+              <TransitionLink
                 href={item.href}
                 className="text-sm leading-6 text-gray-600 hover:text-gray-900"
               >
                 {item.name}
-              </Link>
+              </TransitionLink>
             </div>
           ))}
         </nav>
         <div className="mt-10 flex justify-center space-x-10">
           {navigation.social.map(item => (
-            <Link key={item.name} target="_blank" href={item.href} className="text-gray-400 hover:text-gray-500">
+            <Link
+              key={item.name}
+              target="_blank"
+              href={item.href}
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </Link>

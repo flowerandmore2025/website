@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AbstractFlowerBg from '@/components/animations/AbstractFlowerBg';
+import PageTransition from '@/components/ui/PageTransition';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <PageTransition />
       </body>
     </html>
   );

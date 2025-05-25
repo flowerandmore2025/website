@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import * as motion from 'motion/react-client';
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 
 interface CtaSectionProps {
   title: string;
@@ -110,17 +110,17 @@ export default function CtaSection({
           <div className="mt-8 flex items-center justify-center gap-x-6">
             {primaryButtonText && (
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <Link
+                <TransitionLink
                   href={primaryButtonLink}
                   className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary-600 shadow-sm hover:bg-gray-100 transition-colors duration-300"
                 >
                   {primaryButtonText}
-                </Link>
+                </TransitionLink>
               </motion.div>
             )}
             {secondaryButtonText && secondaryButtonLink && (
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <Link
+                <TransitionLink
                   href={secondaryButtonLink}
                   className="text-sm font-semibold leading-6 text-white flex items-center"
                 >
@@ -128,7 +128,7 @@ export default function CtaSection({
                   <span aria-hidden="true" className="ml-1">
                     →
                   </span>
-                </Link>
+                </TransitionLink>
               </motion.div>
             )}
           </div>

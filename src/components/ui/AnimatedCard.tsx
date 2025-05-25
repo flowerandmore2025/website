@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 
 interface AnimatedCardProps {
   title: string;
@@ -70,12 +70,12 @@ export default function AnimatedCard({
     </motion.div>
   );
 
-  // Wrap with Link if href is provided
+  // Wrap with TransitionLink if href is provided
   if (href) {
     return (
-      <Link href={href} className="block">
+      <TransitionLink href={href} className="block">
         {cardContent}
-      </Link>
+      </TransitionLink>
     );
   }
 
