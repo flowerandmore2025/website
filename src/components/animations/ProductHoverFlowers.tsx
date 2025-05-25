@@ -10,12 +10,14 @@ interface ProductHoverFlowersProps {
   containerRef: React.RefObject<HTMLElement>;
   count?: number;
   colors?: string[];
+  isDesktop?: boolean;
 }
 
 export default function ProductHoverFlowers({
   containerRef,
   count = 5,
   colors = ['#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7'],
+  isDesktop = false,
 }: ProductHoverFlowersProps) {
   const flowersRef = useRef<HTMLDivElement>(null);
 
@@ -24,103 +26,117 @@ export default function ProductHoverFlowers({
 
     const container = containerRef.current;
     const flowersContainer = flowersRef.current;
+    let flowers: HTMLElement[] = [];
 
-    // Create flower elements
-    const flowers: HTMLElement[] = [];
-
-    for (let i = 0; i < count; i++) {
-      const flower = document.createElement('div');
-      flower.className = 'absolute pointer-events-none opacity-0';
-      flower.style.zIndex = '20';
-
-      // Create flower SVG
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const flowerSize = 12 + Math.floor(Math.random() * 12); // Random size between 12-24px
-
-      // Choose between different flower designs
-      const flowerType = Math.floor(Math.random() * 3);
-      let svgContent = '';
-
-      if (flowerType === 0) {
-        // Simple flower design
-        svgContent = `
-          <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C12 5.5 14.5 8 18 8C14.5 8 12 10.5 12 14C12 10.5 9.5 8 6 8C9.5 8 12 5.5 12 2Z" fill="${color}" />
-            <circle cx="12" cy="14" r="2" fill="#FFCE00" />
-          </svg>
-        `;
-      } else if (flowerType === 1) {
-        // Rounded petals flower
-        svgContent = `
-          <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="7" r="5" fill="${color}" />
-            <circle cx="7" cy="12" r="5" fill="${color}" />
-            <circle cx="17" cy="12" r="5" fill="${color}" />
-            <circle cx="12" cy="17" r="5" fill="${color}" />
-            <circle cx="12" cy="12" r="3" fill="#FFCE00" />
-          </svg>
-        `;
-      } else {
-        // Pointed petals flower
-        svgContent = `
-          <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L14 10H10L12 2Z" fill="${color}" />
-            <path d="M2 12L10 10V14L2 12Z" fill="${color}" />
-            <path d="M22 12L14 14V10L22 12Z" fill="${color}" />
-            <path d="M12 22L10 14H14L12 22Z" fill="${color}" />
-            <circle cx="12" cy="12" r="2" fill="#FFCE00" />
-          </svg>
-        `;
+    const createFlowers = () => {
+      // Clear existing flowers before creating new ones
+      while (flowersContainer.firstChild) {
+        flowersContainer.removeChild(flowersContainer.firstChild);
       }
+      flowers = [];
 
-      flower.innerHTML = svgContent;
+      for (let i = 0; i < count; i++) {
+        const flower = document.createElement('div');
+        flower.className = 'absolute pointer-events-none opacity-0';
+        flower.style.zIndex = '20';
 
-      // Position flowers more strategically around the container
-      // Divide the container into sections to ensure better distribution
-      let x = 0;
-      let y = 0;
+        // Create flower SVG
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const flowerSize = 12 + Math.floor(Math.random() * 12); // Random size between 12-24px
 
-      // Create a grid-like distribution with some randomness
-      const section = i % 4; // 4 sections: top-left, top-right, bottom-left, bottom-right
+        // Choose between different flower designs
+        const flowerType = Math.floor(Math.random() * 3);
+        let svgContent = '';
 
-      switch (section) {
-        case 0: // top-left
-          x = 10 + Math.random() * 30;
-          y = 10 + Math.random() * 30;
-          break;
-        case 1: // top-right
-          x = 60 + Math.random() * 30;
-          y = 10 + Math.random() * 30;
-          break;
-        case 2: // bottom-left
-          x = 10 + Math.random() * 30;
-          y = 60 + Math.random() * 30;
-          break;
-        case 3: // bottom-right
-          x = 60 + Math.random() * 30;
-          y = 60 + Math.random() * 30;
-          break;
+        if (flowerType === 0) {
+          // Simple flower design
+          svgContent = `
+            <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C12 5.5 14.5 8 18 8C14.5 8 12 10.5 12 14C12 10.5 9.5 8 6 8C9.5 8 12 5.5 12 2Z" fill="${color}" />
+              <circle cx="12" cy="14" r="2" fill="#FFCE00" />
+            </svg>
+          `;
+        } else if (flowerType === 1) {
+          // Rounded petals flower
+          svgContent = `
+            <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="7" r="5" fill="${color}" />
+              <circle cx="7" cy="12" r="5" fill="${color}" />
+              <circle cx="17" cy="12" r="5" fill="${color}" />
+              <circle cx="12" cy="17" r="5" fill="${color}" />
+              <circle cx="12" cy="12" r="3" fill="#FFCE00" />
+            </svg>
+          `;
+        } else {
+          // Pointed petals flower
+          svgContent = `
+            <svg width="${flowerSize}" height="${flowerSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L14 10H10L12 2Z" fill="${color}" />
+              <path d="M2 12L10 10V14L2 12Z" fill="${color}" />
+              <path d="M22 12L14 14V10L22 12Z" fill="${color}" />
+              <path d="M12 22L10 14H14L12 22Z" fill="${color}" />
+              <circle cx="12" cy="12" r="2" fill="#FFCE00" />
+            </svg>
+          `;
+        }
+
+        flower.innerHTML = svgContent;
+
+        // Position flowers more strategically around the container
+        // Divide the container into sections to ensure better distribution
+        let x = 0;
+        let y = 0;
+
+        // Create a grid-like distribution with some randomness
+        const section = i % 4; // 4 sections: top-left, top-right, bottom-left, bottom-right
+
+        switch (section) {
+          case 0: // top-left
+            x = 10 + Math.random() * 30;
+            y = 10 + Math.random() * 30;
+            break;
+          case 1: // top-right
+            x = 60 + Math.random() * 30;
+            y = 10 + Math.random() * 30;
+            break;
+          case 2: // bottom-left
+            x = 10 + Math.random() * 30;
+            y = 60 + Math.random() * 30;
+            break;
+          case 3: // bottom-right
+            x = 60 + Math.random() * 30;
+            y = 60 + Math.random() * 30;
+            break;
+        }
+
+        // Add some randomness to avoid perfect grid
+        x += (Math.random() - 0.5) * 10;
+        y += (Math.random() - 0.5) * 10;
+
+        flower.style.left = `${x}%`;
+        flower.style.top = `${y}%`;
+
+        flowersContainer.appendChild(flower);
+        flowers.push(flower);
+
+        // Initial state
+        gsap.set(flower, {
+          opacity: 0,
+          scale: 0.5,
+          rotation: Math.random() * 360,
+        });
       }
+    };
 
-      // Add some randomness to avoid perfect grid
-      x += (Math.random() - 0.5) * 10;
-      y += (Math.random() - 0.5) * 10;
-
-      flower.style.left = `${x}%`;
-      flower.style.top = `${y}%`;
-
-      flowersContainer.appendChild(flower);
-      flowers.push(flower);
-
-      // Initial state
-      gsap.set(flower, {
-        opacity: 0,
-        scale: 0.5,
-        rotation: Math.random() * 360,
+    const cleanupFlowers = () => {
+      flowers.forEach(flower => {
+        if (flowersContainer.contains(flower)) {
+          flowersContainer.removeChild(flower);
+        }
       });
-    }
+      flowers = [];
+    };
 
-    // Animation functions
     const animateFlowersIn = () => {
       flowers.forEach((flower, index) => {
         // Initial appearance animation
@@ -215,30 +231,29 @@ export default function ProductHoverFlowers({
       });
     };
 
-    // Event listeners
     const handleMouseEnter = () => {
-      animateFlowersIn();
+      if (isDesktop) animateFlowersIn();
     };
 
     const handleMouseLeave = () => {
-      animateFlowersOut();
+      if (isDesktop) animateFlowersOut();
     };
 
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    if (isDesktop) {
+      createFlowers();
+      container.addEventListener('mouseenter', handleMouseEnter);
+      container.addEventListener('mouseleave', handleMouseLeave);
+    } else {
+      cleanupFlowers(); // Ensure flowers are removed if not on desktop
+    }
 
     return () => {
+      // Always remove event listeners
       container.removeEventListener('mouseenter', handleMouseEnter);
       container.removeEventListener('mouseleave', handleMouseLeave);
-
-      // Clean up flowers
-      flowers.forEach(flower => {
-        if (flowersContainer.contains(flower)) {
-          flowersContainer.removeChild(flower);
-        }
-      });
+      cleanupFlowers(); // Clean up flowers on unmount or when isDesktop changes
     };
-  }, [containerRef, count, colors]);
+  }, [containerRef, count, colors, isDesktop]);
 
   return (
     <div ref={flowersRef} className="absolute inset-0 overflow-hidden pointer-events-none z-20" />

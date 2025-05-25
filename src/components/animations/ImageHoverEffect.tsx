@@ -10,6 +10,7 @@ interface ImageHoverEffectProps {
   width: number;
   height: number;
   className?: string;
+  isDesktop?: boolean;
 }
 
 export default function ImageHoverEffect({
@@ -18,6 +19,7 @@ export default function ImageHoverEffect({
   width,
   height,
   className = '',
+  isDesktop = false,
 }: ImageHoverEffectProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -25,7 +27,13 @@ export default function ImageHoverEffect({
   const shineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current || !imageRef.current || !overlayRef.current || !shineRef.current)
+    if (
+      !isDesktop ||
+      !containerRef.current ||
+      !imageRef.current ||
+      !overlayRef.current ||
+      !shineRef.current
+    )
       return;
 
     const container = containerRef.current;
@@ -75,11 +83,13 @@ export default function ImageHoverEffect({
     container.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseenter', handleMouseEnter);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      if (container) {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseenter', handleMouseEnter);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+      }
     };
-  }, []);
+  }, [isDesktop]);
 
   return (
     <div ref={containerRef} className={`relative overflow-hidden ${className}`}>

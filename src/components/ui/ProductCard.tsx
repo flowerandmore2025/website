@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as motion from 'motion/react-client';
 import Link from 'next/link';
 import { gsap } from 'gsap';
@@ -16,10 +16,20 @@ interface EnhancedProductCardProps {
 export default function ProductCard({ product, index }: EnhancedProductCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const shineRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const updateIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024); // lg breakpoint, adjust as needed
+    };
+    updateIsDesktop();
+    window.addEventListener('resize', updateIsDesktop);
+    return () => window.removeEventListener('resize', updateIsDesktop);
+  }, []);
 
   // Handle shine effect on hover
   useEffect(() => {
-    if (!cardRef.current || !shineRef.current) return;
+    if (!isDesktop || !cardRef.current || !shineRef.current) return;
 
     const card = cardRef.current;
     const shine = shineRef.current;
@@ -54,11 +64,14 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
     card.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseenter', handleMouseEnter);
-      card.removeEventListener('mouseleave', handleMouseLeave);
+      // Ensure card.current exists before trying to remove event listeners
+      if (card) {
+        card.removeEventListener('mousemove', handleMouseMove);
+        card.removeEventListener('mouseenter', handleMouseEnter);
+        card.removeEventListener('mouseleave', handleMouseLeave);
+      }
     };
-  }, []);
+  }, [isDesktop]);
 
   return (
     <Link href={`/products/${product.id}`} className="block h-full">
@@ -68,7 +81,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1, duration: 0.2 }}
-        whileHover={{ y: -4 }}
+        whileHover={isDesktop ? { y: -4 } : {}}
       >
         {/* Shine effect overlay */}
         <div
@@ -107,6 +120,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
               width={600}
               height={400}
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              isDesktop={isDesktop}
             />
           ) : (
             <div className="h-full w-full bg-primary-100 flex items-center justify-center">
@@ -137,6 +151,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
           containerRef={cardRef}
           count={10}
           colors={['#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7']}
+          isDesktop={isDesktop}
         />
       </motion.div>
     </Link>
