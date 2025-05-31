@@ -36,7 +36,7 @@ export async function getProductsAndCategories() {
 }
 
 export const getProducts = memoize(async () => {
-  const values = await getSheetData({ range: 'products!A1:J81' });
+  const values = await getSheetData({ range: 'products!A1:J200' });
   if (!values || values.length < 2) return [];
   const [header, ...rows] = values;
   const products = rows.map(row => {
