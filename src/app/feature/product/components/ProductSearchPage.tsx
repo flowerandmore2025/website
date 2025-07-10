@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import * as motion from 'motion/react-client';
 import { MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import type { Product } from '@/types/product';
 import type { Category } from '@/types/category';
@@ -179,12 +178,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
 
           {/* Filters - Sidebar */}
           <aside className={`${mobileFiltersOpen ? 'block' : 'hidden'} lg:block`}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="sticky top-24 space-y-8 divide-y divide-gray-200 bg-white rounded-xl p-6 shadow-sm border border-gray-100"
-            >
+            <div className="sticky top-24 space-y-8 divide-y divide-gray-200 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
               {/* Search */}
               <div>
                 <h3 className="text-sm font-medium text-gray-900 mb-4">ค้นหา</h3>
@@ -310,7 +304,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
                   รีเซ็ตตัวกรอง
                 </button>
               </div>
-            </motion.div>
+            </div>
           </aside>
 
           {/* Product grid */}

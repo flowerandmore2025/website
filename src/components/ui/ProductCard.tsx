@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import * as motion from 'motion/react-client';
 import { gsap } from 'gsap';
 import ImageHoverEffect from '@/components/animations/ImageHoverEffect';
 import ProductHoverFlowers from '@/components/animations/ProductHoverFlowers';
@@ -76,13 +75,9 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
   return (
     <div className="block h-full">
       <TransitionLink href={`/products/${product.id}`}>
-        <motion.div
+        <div
           ref={cardRef}
           className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1, duration: 0.2 }}
-          whileHover={isDesktop ? { y: -4 } : {}}
         >
           {/* Shine effect overlay */}
           <div
@@ -101,14 +96,9 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
           {/* Popular badge */}
           {product.isPopular && (
             <div className="absolute top-3 right-3 z-10">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1 + 0.3, duration: 0.3 }}
-                className="bg-primary-600 text-white text-xs font-medium px-2 py-1 rounded-full"
-              >
+              <div className="bg-primary-600 text-white text-xs font-medium px-2 py-1 rounded-full">
                 ยอดนิยม
-              </motion.div>
+              </div>
             </div>
           )}
 
@@ -156,7 +146,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
             colors={['#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7']}
             isDesktop={isDesktop}
           />
-        </motion.div>
+        </div>
       </TransitionLink>
     </div>
   );
