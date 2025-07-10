@@ -49,6 +49,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [debouncedFilteredProducts, setDebouncedFilteredProducts] = useState<Product[]>(products);
+  const [isFiltering, setIsFiltering] = useState(false);
 
   // Function to update URL with current filters
   const updateURL = useCallback(() => {
@@ -108,6 +109,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
   }, [isClient, priceRange[0], priceRange[1], debouncedUpdateURL]);
 
   useEffect(() => {
+    setIsFiltering(true);
     const handler = debounce(() => {
       setDebouncedFilteredProducts(
         products.filter((product: Product) => {
@@ -120,6 +122,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
           return matchesCategory && matchesPrice && matchesSearch;
         })
       );
+      setIsFiltering(false);
     }, 300);
     handler();
     return () => handler.cancel();
@@ -425,46 +428,64 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
               )}
             </div>
 
-            {debouncedFilteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-                {debouncedFilteredProducts.map((product: Product, index: number) => (
-                  <ProductCard key={product.id} product={product} index={index} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16 bg-gray-50 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="mx-auto h-12 w-12 text-gray-400"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-                  />
-                </svg>
-                <h3 className="mt-2 text-sm font-medium text-gray-900">ไม่พบสินค้า</h3>
-                <p className="mt-1 text-sm text-gray-500">ลองปรับปรุงตัวกรองหรือค้นหาสินค้าใหม่</p>
-                <div className="mt-6">
-                  <button
-                    onClick={() => {
-                      setSelectedCategory('all');
-                      setPriceRange([100, maxPrice]);
-                      setSearchQuery('');
-                      // Reset URL when resetting filters without scrolling to top
-                      router.replace('/products', { scroll: false });
-                    }}
-                    className="inline-flex items-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500"
-                  >
-                    รีเซ็ตตัวกรอง
-                  </button>
+            <div className="relative">
+              {/* Loading overlay */}
+              {isFiltering && (
+                <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 flex items-center justify-center rounded-lg min-h-[200px]">
+                  <div className="flex flex-col items-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                    <p className="mt-2 text-sm text-primary-600 font-medium">กำลังกรองสินค้า...</p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
+              {debouncedFilteredProducts.length > 0 ? (
+                <div
+                  className={`grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 transition-opacity duration-200 ${
+                    isFiltering ? 'opacity-50' : 'opacity-100'
+                  }`}
+                >
+                  {debouncedFilteredProducts.map((product: Product, index: number) => (
+                    <ProductCard key={product.id} product={product} index={index} />
+                  ))}
+                </div>
+              ) : !isFiltering ? (
+                <div className="text-center py-16 bg-gray-50 rounded-lg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="mx-auto h-12 w-12 text-gray-400"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1}
+                      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                    />
+                  </svg>
+                  <h3 className="mt-2 text-sm font-medium text-gray-900">ไม่พบสินค้า</h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    ลองปรับปรุงตัวกรองหรือค้นหาสินค้าใหม่
+                  </p>
+                  <div className="mt-6">
+                    <button
+                      onClick={() => {
+                        setSelectedCategory('all');
+                        setPriceRange([100, maxPrice]);
+                        setSearchQuery('');
+                        // Reset URL when resetting filters without scrolling to top
+                        router.replace('/products', { scroll: false });
+                      }}
+                      className="inline-flex items-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500"
+                    >
+                      รีเซ็ตตัวกรอง
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </SectionContainer>
