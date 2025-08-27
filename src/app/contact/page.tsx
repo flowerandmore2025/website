@@ -67,7 +67,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start">
+              {/* <div className="flex items-start">
                 <div className="flex-shrink-0">
                   <MapPinIcon className="h-6 w-6 text-primary-200" />
                 </div>
@@ -77,14 +77,17 @@ export default function Contact() {
                     9/22 หมู่บ้านโกลเด้นวิล 2 ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-12">
               <h4 className="text-lg font-medium">ติดตามเรา</h4>
               <div className="mt-4 flex space-x-4">
                 {[
-                  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576166213676' },
+                  {
+                    name: 'Facebook',
+                    href: 'https://www.facebook.com/profile.php?id=61576166213676',
+                  },
                   { name: 'Instagram', href: 'https://www.instagram.com/flowerandmore.official/' },
                   { name: 'Line', href: 'https://line.me/ti/p/@623jsfdu' },
                 ].map(item => (
@@ -104,7 +107,7 @@ export default function Contact() {
       </SectionContainer>
 
       {/* Map */}
-      <SectionContainer background="light" title="ที่ตั้งของเรา">
+      {/* <SectionContainer background="light" title="ที่ตั้งของเรา">
         <div className="h-96 w-full bg-gray-200 rounded-lg overflow-hidden shadow-inner">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15807.198488612481!2d98.32176427851664!3d7.915988573718394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050305e50e4eba9%3A0xa653119afd2b0d03!2sPhuket%20Golden%20Ville%205!5e0!3m2!1sen!2sth!4v1746350063631!5m2!1sen!2sth"
@@ -116,7 +119,7 @@ export default function Contact() {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      </SectionContainer>
+      </SectionContainer> */}
     </div>
   );
 }
