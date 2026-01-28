@@ -339,7 +339,7 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map(relatedProduct => (
-                <div key={relatedProduct.id} className="group relative">
+                <TransitionLink href={`/products/${relatedProduct.id}`} key={relatedProduct.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 lg:h-60">
                     {relatedProduct.image ? (
                       <Image
@@ -360,17 +360,15 @@ export default function ProductClient({ product, category, relatedProducts }: Pr
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-900">
-                        <TransitionLink href={`/products/${relatedProduct.id}`}>
-                          <span aria-hidden="true" className="absolute inset-0" />
-                          {relatedProduct.name}
-                        </TransitionLink>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {relatedProduct.name}
                       </h3>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
                       {relatedProduct.price.toLocaleString()} บาท
                     </p>
                   </div>
-                </div>
+                </TransitionLink>
               ))}
             </div>
           </div>

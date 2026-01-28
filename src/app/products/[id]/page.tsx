@@ -13,9 +13,14 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for the product page
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
   const { products } = await getProductsAndCategories();
-  const product = products.find((p: Product) => p.id === params.id);
+  const product = products.find((p: Product) => p.id === resolvedParams.id);
 
   if (!product) {
     return {
@@ -57,9 +62,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
   const { products, categories } = await getProductsAndCategories();
-  const product = products.find((p: Product) => p.id === params.id);
+  const product = products.find((p: Product) => p.id === resolvedParams.id);
   if (!product) notFound();
   const category = categories.find((c: Category) => c.id === product.categoryId);
   const relatedProducts = products

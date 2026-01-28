@@ -51,6 +51,11 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
   const [debouncedFilteredProducts, setDebouncedFilteredProducts] = useState<Product[]>(products);
   const [isFiltering, setIsFiltering] = useState(false);
 
+  // Get the highest price for range input max (memoized to avoid recalculation)
+  const maxPrice = useMemo(() => {
+    return products.length > 0 ? Math.max(...products.map((p: Product) => p.price)) : 10000;
+  }, [products]);
+
   // Function to update URL with current filters
   const updateURL = useCallback(() => {
     if (!isClient) return;
@@ -67,11 +72,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
       params.set('minPrice', priceRange[0].toString());
     }
 
-    if (
-      products &&
-      priceRange[1] !==
-        (products.length > 0 ? Math.max(...products.map((p: Product) => p.price)) : 10000)
-    ) {
+    if (priceRange[1] !== maxPrice) {
       params.set('maxPrice', priceRange[1].toString());
     }
 
@@ -81,7 +82,7 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
 
     // Use replace instead of push and set scroll to false to prevent scrolling to top
     router.replace(url, { scroll: false });
-  }, [isClient, router, selectedCategory, priceRange[0], priceRange[1], products]);
+  }, [isClient, router, selectedCategory, priceRange, maxPrice]);
 
   const debouncedUpdateURL = useMemo(() => debounce(updateURL, 300), [updateURL]);
 
@@ -129,9 +130,6 @@ export default function ProductSearchPage({ products, categories }: ProductSearc
   }, [products, selectedCategory, priceRange[0], priceRange[1], searchQuery]);
 
   if (!products || !categories) return null;
-
-  // Get the highest price for range input max
-  const maxPrice = products.length > 0 ? Math.max(...products.map((p: Product) => p.price)) : 10000;
 
   if (!isClient) {
     return null; // Avoid hydration issues by not rendering until client-side
