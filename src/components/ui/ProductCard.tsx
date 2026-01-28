@@ -141,7 +141,7 @@ export default function ProductCard({ product, index }: EnhancedProductCardProps
 
           {/* Flower micro animations */}
           <ProductHoverFlowers
-            containerRef={cardRef}
+            containerRef={cardRef as React.RefObject<HTMLElement>}
             count={10}
             colors={['#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7']}
             isDesktop={isDesktop}
