@@ -67,17 +67,17 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* <div className="flex items-start">
+              <div className="flex items-start">
                 <div className="flex-shrink-0">
                   <MapPinIcon className="h-6 w-6 text-primary-200" />
                 </div>
                 <div className="ml-4">
                   <p className="text-base font-medium">ที่ตั้ง</p>
                   <p className="mt-1">
-                    9/22 หมู่บ้านโกลเด้นวิล 2 ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120
+                    42/29 ถ.รัตนโกสินทร์ 200ปี ต.ตลาดเหนือ อ.เมือง จ.ภูเก็ต 83000
                   </p>
                 </div>
-              </div> */}
+              </div>
             </div>
 
             <div className="mt-12">
