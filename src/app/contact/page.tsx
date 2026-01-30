@@ -6,6 +6,10 @@ import PageHeader from '@/components/ui/PageHeader';
 import SectionContainer from '@/components/ui/SectionContainer';
 
 export default function Contact() {
+  const mapAddress =
+    '20 Rattanakosin 200 Pi Rd, Tambon Talat Nuea, Amphoe Mueang Phuket, Chang Wat Phuket 83000';
+  const mapSrc = `https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d520.9910510515252!2d98.38879767619314!3d7.87186483507594!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502e03a5bd4c5d%3A0x2f35d3973eacf5f8!2s20%20Rattanakosin%20200%20Pi%20Rd%2C%20Tambon%20Talat%20Nuea%2C%20Amphoe%20Mueang%20Phuket%2C%20Chang%20Wat%20Phuket%2083000!5e0!3m2!1sen!2sth!4v1769790263020!5m2!1sen!2sth`;
+
   return (
     <div className="min-h-screen">
       <PageHeader title="ติดต่อเรา" subtitle="ติดต่อเราเพื่อสร้างความสัมพันธ์กับเรา" />
@@ -73,9 +77,7 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <p className="text-base font-medium">ที่ตั้ง</p>
-                  <p className="mt-1">
-                    42/29 ถ.รัตนโกสินทร์ 200ปี ต.ตลาดเหนือ อ.เมือง จ.ภูเก็ต 83000
-                  </p>
+                  <p className="mt-1">{mapAddress}</p>
                 </div>
               </div>
             </div>
@@ -107,10 +109,10 @@ export default function Contact() {
       </SectionContainer>
 
       {/* Map */}
-      {/* <SectionContainer background="light" title="ที่ตั้งของเรา">
+      <SectionContainer background="light" title="ที่ตั้งของเรา">
         <div className="h-96 w-full bg-gray-200 rounded-lg overflow-hidden shadow-inner">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15807.198488612481!2d98.32176427851664!3d7.915988573718394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050305e50e4eba9%3A0xa653119afd2b0d03!2sPhuket%20Golden%20Ville%205!5e0!3m2!1sen!2sth!4v1746350063631!5m2!1sen!2sth"
+            src={mapSrc}
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -119,7 +121,7 @@ export default function Contact() {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      </SectionContainer> */}
+      </SectionContainer>
     </div>
   );
 }
